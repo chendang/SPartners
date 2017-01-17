@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0" />
+		<link type="text/css" href="../../css/style.css" rel="stylesheet" />
+		<script type="text/javascript" src="../../js/jquery-1.7.min.js"></script>
+		<script type="text/javascript" src="../../js/main.js"></script>
+		<script src="../../js/pulsClick.js" type="text/javascript"></script>
+<title>无标题文档</title>
+</head>
+
+<body>
+<!--头部start-->
+<div class="header header-bg">
+  <ul>
+    <h1>完善信息</h1>
+    <a href="javascript:back();" title="" class="back"><img src="../../images/10.png" alt=""/></a>
+    <a href="javascript:clicked('../../index.html',true);" title="" class="resigers">跳过</a>
+  </ul>
+</div>
+<!--头部end-->
+
+<!--注册start-->
+<div class="resiger">
+  <ul class="form">
+    <li class="ico06">
+      <div><input type="text" value="" placeholder="请输入你的真实姓名" id="realname"/></div>
+    </li>
+    <li class="ico07">
+      <div><input type="text" value="" placeholder="请输入所属院校" id="collage"/></div>
+    </li>
+    <li class="ico08">
+      <div><input type="text" value="" placeholder="请输入常用的邮箱" id="email"/></div>
+    </li>
+  </ul>
+  <ul class="form01 mt25">
+    <li><input type="button" value="提交" class="button" id="btnsave"/></li>
+  </ul>
+</div>
+<!--注册end-->
+
+</body>
+
+<script type="text/javascript" src="../../js/public.js"></script>
+<script src="../../js/mui.min.js"></script>
+	<script>
+		var domainUrl = GetMvcApiDomain();
+
+
+		function RegCheck() {
+
+			var realname = document.getElementById('realname').value;;
+			var collage = document.getElementById('collage').value;
+			var email = document.getElementById('email').value;
+			
+        if(realname==null || realname=='') {
+				plus.nativeUI.toast("请输入真实姓名", {
+								duration: "long"
+						});
+				$("#realname").focus();
+				return false;
+			} 
+			
+			if(collage==null || collage=='') {
+				plus.nativeUI.toast("请输入所属院校", {
+								duration: "long"
+						});
+				$("#collage").focus();
+				return false;
+			} 
+			
+			if(email==null || email=='') {
+				plus.nativeUI.toast("请输入邮箱", {
+								duration: "long"
+						});
+				$("#email").focus();
+				return false;
+			} 
+        var username = localStorage.getItem("userid");
+				infoRegSave(username, collage, email, realname);
+
+
+		}
+
+		function infoRegSave(telno, college, mailbox, realname) {
+
+			var jsonData = {
+				"action": "0",
+				"telno": telno,
+				"college": college,
+				"mailbox": mailbox,
+				"realname": realname
+			}
+
+			$.ajax({
+				url: domainUrl + "userinfo/putUser",
+				type: 'PUT',
+				dataType: "json",
+				contentType: "application/json; charset=utf-8",
+				data: JSON.stringify(jsonData),
+				success: function(data) {
+					if(data.status_code == "000000") {
+				     clicked("../../index.html",true);
+
+
+					} else {
+						plus.nativeUI.toast(data.result, {
+								duration: "long"
+						});
+						return false;
+					}
+
+				},
+				error: function() {
+					plus.nativeUI.toast("网络错误，请稍后再试", {
+								duration: "long"
+						});
+				}
+			});
+
+		}
+
+		document.getElementById("btnsave").addEventListener('tap', function() {
+			RegCheck();
+		});
+
+	</script>
+
+
+
+</html>

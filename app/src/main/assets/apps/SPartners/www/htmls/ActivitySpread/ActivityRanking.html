@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0" />
+		<meta name="format-detection" content="telephone=no" />
+		<link type="text/css" href="../../css/style.css" rel="stylesheet" />
+		<script type="text/javascript" src="../../js/jquery-1.7.min.js"></script>
+		<script type="text/javascript" src="../../js/main.js"></script>
+		<script src="../../js/pulsClick.js" type="text/javascript"></script>
+		<title>活动排行</title>
+	</head>
+
+	<body>
+		<!--头部start-->
+		<div class="header header-bg">
+			<ul>
+				<h1>活动排行</h1>
+				<a href="javascript:back();" title="" class="back"><img src="../../images/10.png" alt="" /></a>
+			</ul>
+		</div>
+		<!--头部end-->
+
+		<!--前三start-->
+		<div class="activity-rank">
+			<p>排行20名：酬金为350元</p>
+			<ul>
+				<li class="m_cell_hd">
+					<div class="activity01">
+						<span><img id="top2_img" src="../../images/22.jpg" alt="" /><em>2</em></span>
+						<h4 id="top2_name"></h4>
+					</div>
+				</li>
+				<li class="m_cell_hd m_cell_primary">
+					<div class="activity02">
+						<span><img id="top1_img" src="../../images/22.jpg" alt="" /><em>1</em></span>
+						<h4 id="top1_name"></h4>
+					</div>
+				</li>
+				<li class="m_cell_ft">
+					<div class="activity01 activity03">
+						<span><img id="top3_img" src="../../images/22.jpg" alt="" /><em>3</em></span>
+						<h4 id="top3_name"></h4>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<!--前三end-->
+
+		<!--列表start-->
+		<div class="activity-rank-list mt10">
+			<ul id="RankingList">
+			</ul>
+		</div>
+		<!--列表end-->
+	</body>
+	<script src="../../js/mui.min.js"></script>
+	<script src="../../js/public.js" type="text/javascript"></script>
+
+	<script>
+		var domainUrl = GetMvcApiDomain();
+
+		mui.init();
+
+		getActiveRanking();
+
+		function getActiveRanking() {
+
+			$.ajax({
+				url: domainUrl + "/api/v1/internal/{\"v_top_activity\":{\"pagination\":{\"page\":\"0\", \"limit\":\"10\"},\"projectType\":\"'activity'\",\"columns\":\"userID, userName, picPath, amount\"}}",
+				type: 'get',
+				dataType: "json",
+				success: function(data) {
+					if(data.status_code == '000000') {
+						var inner = '';
+						$.each(data.result.data, function(i, j) {
+							if(parseInt(i) < 3) {
+								var id = 'top' + (parseInt(i) + 1) + '_name';
+								document.getElementById(id).innerHTML = j.userName + "<br/><em>" + j.amount + "</em><i>元</i>";
+							} else {
+								inner += '<li>';
+								inner += '<a href="javascript:void(0);">';
+								inner += '<div class="m_cell_hd"><i>' + (parseInt(i) + 1) + '</i></div>';
+								inner += '<div class="m_cell_hd"><img src="../../images/4.png" alt="" /></div>';
+								inner += '<div class="m_cell_hd m_cell_primary"><h4>' + j.userName + '</h4></div>';
+								inner += '<div class="m_cell_ft"><p>' + j.amount + '元</p></div>';
+								inner += '</a>';
+								inner += '</li>';
+							}
+
+						});
+						$("#RankingList").html(inner);
+					} else {
+						plus.nativeUI.toast(data.result, {
+							duration: "long"
+						});
+					}
+
+				},
+				error: function() {
+					plus.nativeUI.toast("网络错误，请稍后再试", {
+						duration: "long"
+					});
+				}
+			})
+
+		}
+	</script>
+
+</html>

@@ -1,0 +1,254 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0" />
+<meta name="format-detection" content="telephone=no" />
+<link type="text/css" href="css/style.css" rel="stylesheet" />
+<script type="text/javascript" src="js/jquery-1.7.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<!--<script type="text/javascript" src="js/flexible.debug.js"></script>
+<script type="text/javascript" src="js/flexible_css.debug.js"></script>-->
+
+<script src="js/common.js" type="text/javascript" ></script>
+<title>登录</title>
+</head>
+
+<body class="login-bgimg">
+<!--头部start-->
+<div class="header">
+  <ul>
+    <h1>登录</h1>
+    <a href="javascript:goUrlReg();" title="" class="resigers" open-type="common">注册</a>
+  </ul>
+</div>
+<!--头部end-->
+<!--登录start-->
+<div class="login">
+  <img src="images/1.png" alt="" id="headImage"/>
+  <ul>
+    <li>
+      <input type="text" placeholder="请输入手机号" class="tel opc" id="UserName"/>
+    </li>
+    <li>
+      <input type="password" placeholder="请输入密码" class="pwd opc" id="UserPass"/>
+    </li>
+    <li class="button">
+      <input type="button" onclick="javascript:checkLogin();" value="登录" class="opc"/>
+    </li>
+    <li class="clearfix forget">
+      <p class="fl"><a href="javascript:clicked('htmls/Register/ForgetPassword.html',true);" title="" class="opc">忘记密码？</a></p>
+      <p class="fr"><a href="javascript:clicked('SMSLogin.html',true);" title="" class="opc">短信验证登录</a></p>
+    </li>
+  </ul>
+</div>
+<!--登录end-->
+
+<!--登录失败start-->
+<div class="login-false" id="errorTibs" style="display:none;">
+  <div><b class="opc" id="tibtxt">登录失败，请重新登录</b></div>
+</div>
+<!--登录失败end-->
+
+<!--第三方登录start-->
+<div class="login-other">
+  <h2 class="opc"><em></em><i></i>第三方登录</h2>
+  <ul>
+    <a href="##" title=""><img src="images/6.png" alt="" id="qq"/></a>
+    <a href="##" title=""><img src="images/7.png" alt="" id="weixin"/></a>
+    <a href="##" title=""><img src="images/8.png" alt="" id="sinaweibo"/></a>
+  </ul>
+  <p class="opc" id="visitorLogin">随便看看</p>
+</div>
+<!--第三方登录end-->
+
+</body>
+<script src="js/mui.min.js"></script>
+<script src="js/public.js" type="text/javascript"></script>
+<script>
+
+
+				mui.init({
+				swipeBack: false,
+				statusBarBackground: '#f7f7f7',
+				gestureConfig: {
+					doubletap: true
+				}
+			});
+			
+//第三方登陆			
+   mui.plusReady(function() {   
+            plus.oauth.getServices(function(services) { 
+                auths = services; 
+            }, function(e) { 
+                alert("获取登录服务列表失败：" + e.message + " - " + e.code); 
+            }); 
+        }) 		
+			
+       document.getElementById('weixin').addEventListener('tap',function() { 
+            console.log("微信"); 
+            authLogin('weixin'); 
+        }) 
+        document.getElementById('qq').addEventListener('tap',function() { 
+            console.log("QQ"); 
+            authLogin('qq'); 
+        }) 
+        document.getElementById('sinaweibo').addEventListener('tap',function() { 
+            console.log("微博"); 
+            authLogin('sinaweibo'); 
+        }) 
+			
+// 登录操作 
+        function authLogin(type) { 
+            var s; 
+            for (var i = 0; i < auths.length; i++) { 
+                if (auths[i].id == type) { 
+                    s = auths[i]; 
+                    break; 
+                } 
+            } 
+            if (!s.authResult) { 
+                s.login(function(e) { 
+                    plus.nativeUI.toast("登录认证成功！",{duration:"long"});
+                    authUserInfo(type); 
+                }, function(e) { 
+                	plus.nativeUI.toast("登录认证失败！",{duration:"long"});
+                    
+                }); 
+            } else { 
+                plus.nativeUI.toast("已经登录认证！",{duration:"long"});
+            } 
+        } 
+        
+         //注销 
+ function authLogout() { 
+            for (var i in auths) { 
+                var s = auths[i]; 
+                if (s.authResult) { 
+                    s.logout(function(e) { 
+                        console.log("注销登录认证成功！"); 
+                    }, function(e) { 
+                        console.log("注销登录认证失败！"); 
+                    }); 
+                } 
+            } 
+        } 
+      
+// 登录认证信息 
+        function authUserInfo(type) { 
+            var s; 
+            for (var i = 0; i < auths.length; i++) { 
+                if (auths[i].id == type) { 
+                    s = auths[i]; 
+                    break; 
+                } 
+            } 
+            if (!s.authResult) { 
+            	plus.nativeUI.toast("未授权登录！",{duration:"long"});
+            } else { 
+                s.getUserInfo(function(e) { 
+                    var josnStr = JSON.stringify(s.userInfo); 
+                    var jsonObj = s.userInfo; 
+                    console.log("获取用户信息成功：" + josnStr); 
+                    showData(type,jsonObj); 
+                    authLogout(); 
+                }, function(e) { 
+                	plus.nativeUI.toast("获取用户信息失败：" + e.message + " - " + e.code,{duration:"long"});
+                }); 
+            } 
+        } 
+        // 显示用户头像信息 
+        function showData(type,data) { 
+            switch (type){ 
+                case 'weixin': 
+                    headImage.src = data.headimgurl; 
+                    break; 
+                case 'qq': 
+                    headImage.src = data.figureurl_qq_2; 
+                    break; 
+                case 'sinaweibo': 
+                    headImage.src = data.avatar_large; 
+                    break; 
+                default: 
+                    break; 
+            } 
+        } 
+            
+        
+var domainUrl = GetMvcApiDomain(); 
+
+
+
+var checkLogin = function() {
+var UserName=$("#UserName").val();
+var UserPass=$("#UserPass").val();
+    if (UserName.length == 0 || UserName=="") {
+                $("#UserName").val("");
+                $("#UserName").focus();
+                plus.nativeUI.toast("请输入账号！",{duration:"long"});
+                return false;
+
+    }
+    if (!validatePass(UserPass)) {
+                $("#UserPass").val("");
+                $("#UserPass").focus();
+                plus.nativeUI.toast("请输入不少于六位数登陆密码！",{duration:"long"});
+                return false;
+    }else {
+    	plus.nativeUI.showWaiting();
+	  $.ajax({
+      url: domainUrl + "userinfo/login/{\"telno\":\""+UserName+"\",\"password\":\""+UserPass+"\"}",
+      type: 'get',
+      dataType: "json",
+      success: function (data) {
+
+      if (data.status_code=="000000") {
+      	
+      	var user = data.result;
+
+      	localStorage.setItem('userinfo',JSON.stringify(user));
+      	localStorage.setItem('userid',UserName);
+      	localStorage.setItem('loginMode',"1");
+      	
+        clicked('index.html',true);
+
+      }
+      else{
+
+	 
+        $("#UserPass").val("");
+        plus.nativeUI.toast(data.result,{duration:"long"});   
+   	
+	   }
+ plus.nativeUI.closeWaiting();
+     $("#UserPass").val("");
+     return;
+    },
+    error: function () {
+     plus.nativeUI.closeWaiting();
+                plus.nativeUI.toast("网络错误，请稍后再试");
+   }
+  });
+ 
+  }
+         
+}
+    
+    
+       
+
+
+function	goUrlReg(){
+clicked('htmls/Register/RegisterFirst.html',true)
+}
+
+
+document.getElementById("visitorLogin").addEventListener('tap', function() {
+localStorage.setItem('loginMode',"2");	
+clicked('index.html',true);
+});
+
+</script>
+
+
+</html>

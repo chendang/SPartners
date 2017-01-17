@@ -1,0 +1,213 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0" />
+<meta name="format-detection" content="telephone=no" />
+<link type="text/css" href="../../css/style.css" rel="stylesheet" />
+<script type="text/javascript" src="../../js/jquery-1.7.min.js"></script>
+<script type="text/javascript" src="../../js/main.js"></script>
+<script src="../../js/pulsClick.js" type="text/javascript" ></script>
+<title>推广详情</title>
+</head>
+
+<body>
+<!--头部start-->
+<div class="header header-bgf">
+  <ul>
+    <h1>推广详情</h1>
+    <a href="javascript:back();" title="" class="back"><img src="../../images/29.png" alt=""/></a>
+    <a href="javascript:void(0)" class="header-share"></a>
+  </ul>
+</div>
+<!--头部end-->
+
+<!--活动标题start-->
+<div class="active-title active-title01 mt10">
+  <h1 id="title">天猫超市校园迎新活动</h1>
+  <ul>
+    <li class="m_cell_hd m_cell_primary">
+      <span id="actdate">推广时间：8月1日到10月2日</span>
+    </li>
+    <li class="m_cell_ft"><a href="javascript:void(0)" class="directive">校园经理人</a></li>
+  </ul>
+</div>
+<!--活动标题end-->
+
+
+<!--内容start-->
+<div class="file-complaint">
+  <ul>
+    <h4>推广细则</h4>
+    <p>招聘人数:<i id="zprs">20人</i></p>
+    <p>薪酬待遇:<i id="xzdy">10元/单</i></p>
+    <p>职位类别:<i id="zwlb">推广专员</i></p>
+    <p>结算方式:<i>支付宝或微信结算</i></p>
+  </ul>
+  <ul>
+    <h4>推广说明</h4>
+    <p>工作地点:<i id="gzdz">限北京、上海、广东</i></p>
+    <p>工作内容:<i id="gznr">以任意宣传方式推广天猫超市的产品，只要引导客户在推广员专属的推广页面上下单，即可获得相应的酬金，酬金按单结算；推广员报名成功后可获得专属的推广链接和推广二维码</i></p>
+  </ul>
+</div>
+<!--内容end-->
+
+<!--底部start-->
+<div class="line50"></div>
+<div class="save-add">
+  <ul class="clearfix">
+    <a href="javascript:void(0)" class="fr add-active add-active02">报名推广</a>
+  </ul>
+</div>
+<!--底部end-->
+
+<!--报名成功start-->
+<div class="box-success join-success">
+  <i>报名成功</i>
+</div>
+<!--报名成功end-->
+
+<!--分享弹窗start-->
+<div class="hover02 disable"></div>
+<div class="share-box disable">
+  <div>
+    <ul class="clearfix">
+      <li><a href="#" title=""><img src="../../images/49.png" alt="" /></a></li>
+      <li><a href="#" title=""><img src="../../images/50.png" alt="" /></a></li>
+      <li><a href="#" title=""><img src="../../images/51.png" alt="" /></a></li>
+      <li><a href="#" title=""><img src="../../images/52.png" alt="" /></a></li>
+      <li><a href="#" title=""><img src="../../images/53.png" alt="" /></a></li>
+    </ul>
+    <a href="javascript:void(0)">取消</a>
+  </div>
+</div>
+<!--分享弹窗end-->
+
+<!--指令弹窗start-->
+<div class="hover disable"></div>
+<div class="box box02 disable">
+  <ul>
+    <img src="../../images/42.png" class="close"/>
+    <div class="directive-box">
+      <h2>请输入指令</h2>
+      <ul>
+        <input type="text" value="" />
+        <input type="text" value="" />
+        <input type="text" value="" />
+        <input type="text" value="" />
+      </ul>
+      <a href="javascript:void(0)">提交</a>
+    </div>
+  </ul>	
+</div>
+<!--指令弹窗end-->
+</body>
+<script src="../../js/mui.min.js"></script>
+<script src="../../js/public.js" type="text/javascript"></script>
+
+
+<script>
+var domainUrl = GetMvcApiDomain(); 
+
+mui.init();
+
+var actId=getUrlParam("id");
+getSpreadDetail(actId);
+
+
+function getSpreadDetail(id) {
+	
+	          $.ajax({
+             	 url: domainUrl + "api/v1/internal/{\"partner_promotion_info\":{\"id\":\"'08333107d61411e6b81700163e0c009c'\",\"columns\":\"id,name, picture , address , startTime , finishTime , registrationTime , jobType , remuneration , maxPartnerNum , genderRequirement , task , linkmanID , linkmanName , linkmanPhone ,apprveToJoin , joinedPartnerNum \"}}",
+                type: 'get',
+                dataType: "json",
+                success: function (data) {
+                 if (data.status_code=='000000'){
+                 document.getElementById('title').innerHTML=data.result.name;
+                 document.getElementById('actdate').innerHTML=data.result.startTime;
+                 document.getElementById('zprs').innerHTML=data.result.maxPartnerNum;
+                 document.getElementById('xzdy').innerHTML=data.result.remuneration;
+                 document.getElementById('zwlb').innerHTML=data.result.jobType;
+                 document.getElementById('gznr').innerHTML=data.result.task;
+                 document.getElementById('gzdz').innerHTML=data.result.address;
+
+                 
+                 }
+                 else{
+                 plus.nativeUI.toast(data.result, {
+								 duration: "long"
+						     });                	
+                 }
+   
+               },
+                error: function () {
+                plus.nativeUI.toast("网络错误，请稍后再试", {
+								duration: "long"
+						    });
+                }
+            })
+
+ }
+
+
+
+
+function activitySignUp(){
+	
+							var jsonData = {
+								"partner_user_join": {
+									"id": "'"+Date.parse(new Date())+"'",
+									"userID": "'"+JSON.parse(localStorage.getItem('userinfo')).id+"'",
+									"joinProjectId": "'"+actId+"'",
+									"projectName": "'"+actDetail.name+"'",
+									"projectType": "'activity'",
+									"joinType": "'selfJoing'"
+//									"promotionInviteCode ": "'{邀请码}'",
+//									"managerID":"'{经理人id}'",
+//									"managerName":"'{经理人姓名}'"
+								}				
+							}
+		          $.ajax({
+             	 	url: domainUrl + "api/v1/internal/",
+								type: 'POST',
+								dataType: "json",
+								contentType: "application/json; charset=utf-8",
+								data: JSON.stringify(jsonData),
+                success: function (data) {
+                 if (data.status_code=='000000'){
+
+	                 plus.nativeUI.toast("报名成功", {duration: "long"});
+	                 
+//									  //报名
+//									  $(".add-active01").click(function(){
+//									    if($(this).hasClass("on")){
+//										  $(this).removeClass("on");
+//										  $(this).text("报名参加");
+//										}else{
+										  $("#SignUpBtn").addClass("on");
+										  $("#SignUpBtn").text("审核中");
+										  $("#SignUpBtn").DISABLED=true;
+//										  $(".join-success").show();
+//										}
+//									  });
+								 }
+                 else{
+                 	alert("error res:"+data.status_code);
+                 plus.nativeUI.toast(data.result, {
+								 duration: "long"
+						     });                	
+                 }
+   
+               },
+                error: function () {
+                plus.nativeUI.toast("网络错误，请稍后再试", {
+								duration: "long"
+						    });
+                }
+            })
+}
+
+</script>
+</html>

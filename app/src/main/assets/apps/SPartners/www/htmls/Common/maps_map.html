@@ -1,0 +1,188 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+		<meta name="HandheldFriendly" content="true"/>
+		<meta name="MobileOptimized" content="320"/>
+		<title>活动签到</title>
+		<link rel="stylesheet" href="../../css/style.css" />
+		<script type="text/javascript" src="../../js/pulsClick.js" ></script>
+		<script type="text/javascript" src="../../js/public.js"></script>
+		<script type="text/javascript" src="../../js/jquery-1.7.min.js"></script>
+		<script type="text/javascript">
+var ws=null,wo=null;
+var em=null,map=null,pcenter=null;
+var selectedActivity=null;
+var domainUrl = GetMvcApiDomain();
+// H5 plus事件处理
+function plusReady(){
+	if(!em||ws){return};
+	// 获取窗口对象
+	ws=plus.webview.currentWebview();
+	selectedActivity=ws.selectedActivity;
+	wo=ws.opener();
+	//高德地图坐标为(116.3974357341,39.9085574220), 百度地图坐标为(116.3975,39.9074)
+	pcenter = new plus.maps.Point(116.3975,39.9074);
+	setTimeout(function(){
+		map=new plus.maps.Map("map");
+		map.setMapType(plus.maps.MapType.MAPTYPE_NORMAL);
+		map.centerAndZoom(pcenter,12);
+		createMarker();
+		// 创建子窗口
+		createSubview();
+		
+		userLocation();
+	},300);
+	// 显示页面并关闭等待框
+    ws.show("pop-in");
+}
+if(window.plus){
+	plusReady();
+}else{
+	document.addEventListener("plusready",plusReady,false);
+}
+// DOMContentloaded事件处理
+document.addEventListener("DOMContentLoaded",function(){
+	em=document.getElementById("map");
+	window.plus&&plusReady();
+},false);
+function userLocation(isShowMyLoc){
+	map.showUserLocation( true );
+	map.getUserLocation(function(state,pos){
+//		alert("state："+state);
+		if(0==state){
+			if(isShowMyLoc){
+				map.setCenter(pos);
+			}
+//			map.setCenter(pos);
+//			计算距离
+			var distance;
+//			alert("my pos："+JSON.stringify(pos));
+//			alert("longitude:"+pos.longitude);
+//			alert("latitude:"+pos.latitude);
+			var point1 = new plus.maps.Point(pos.longitude,pos.latitude);
+			var point2 =new plus.maps.Point(116.347292,39.968716)
+			plus.maps.Map.calculateDistance(point1,point2,function(event){
+				distance = event.distance;  // 转换后的距离值
+//				alert("Distance:"+distance);
+				/*plus.nativeUI.a("您当前位置距离签到点还有"+distance+"米", {
+								 duration: "long"
+						     }); */
+				plus.nativeUI.alert("您当前位置距离签到点还有"+distance+"米");
+			},function(e){
+				alert("Failed:"+JSON.stringify(e));
+			});
+			// 创建子窗口
+			//createSubview(distance);
+			/*plus.maps.Map.calculateDistance(new plus.maps.Point(pos.longitude,pos.latitude), new plus.maps.Point(116.347292,39.968716), function(event){
+				var distance = event.distance;  // 转换后的距离值
+				alert("Distance:"+distance);
+			}, ,function(e){
+				alert("Failed:"+JSON.stringify(e));
+			});*/
+			
+		}
+	});
+}
+function createMarker(){
+	//高德地图坐标为(116.3406445236,39.9630878208), 百度地图坐标为(116.347292,39.968716
+	var marker=new plus.maps.Marker(new plus.maps.Point(116.347292,39.968716));
+	marker.setIcon("../../images/22.png");
+	marker.setLabel("活动签到点");
+	var bubble = new plus.maps.Bubble("该点签到");
+	marker.setBubble(bubble);
+	map.addOverlay(marker);
+}
+function createSubview(){
+	// 创建加载内容窗口
+	var topoffset='44px';
+	if(plus.navigator.isImmersedStatusbar()){// 兼容immersed状态栏模式
+		topoffset=(Math.round(plus.navigator.getStatusbarHeight())+81)+'px';
+	}
+	var wsub=plus.webview.create('maps_map_sub.html','sub',{top:topoffset,height:'81px',position:'absolute',scrollIndicator:'none',background:'transparent'});
+	ws.append(wsub);
+}
+function resetMap(){
+	//map.centerAndZoom(pcenter,12);
+	map.reset();
+	}
+
+	function signIn() {
+
+		var jsonData = {
+			"partner_prcheckin_record": {
+				"id": "'" + Date.parse(new Date()) + "'",
+				"userID": "'" + JSON.parse(localStorage.getItem('userinfo')).id + "'",
+				"checktype":"'1'",
+				"activity_id": "'" + selectedActivity.id + "'",
+				"lat": "'" + selectedActivity.lat + "'",
+				"lng": "'" + selectedActivity.lng + "'"
+			}
+		}
+//		alert("send:"+JSON.stringify(jsonData));
+		$.ajax({
+			url: domainUrl + "api/v1/internal/",
+			type: 'POST',
+			dataType: "json",
+			contentType: "application/json; charset=utf-8",
+			data: JSON.stringify(jsonData),
+			success: function(data) {
+				if(data.status_code == "000000") {
+
+					plus.nativeUI.toast("签到成功", {
+						duration: "long"
+					});
+
+				} else {
+					plus.nativeUI.toast("签到失败,失败错误码："+data.status_code+"错误信息："+data.result, {
+						duration: "long"
+					});
+					return false;
+				}
+
+			},
+			error: function() {
+				plus.nativeUI.toast("网络错误，请稍后再试", {
+					duration: "long"
+				});
+			}
+		});
+
+	}
+	</script>
+		<link rel="stylesheet" href="../css/common.css" type="text/css" charset="utf-8"/>
+		<style type="text/css">
+#map {
+	width: 100%;
+	position: fixed;
+	top: 45px;
+	bottom: 0px;
+	line-height: 200px;
+	text-align: center;
+	background: #FFFFFF;
+}
+.ipos {
+	background: no-repeat center center url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAsCAYAAAAn4+taAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABZ0RVh0Q3JlYXRpb24gVGltZQAwNC8wMS8xNExYUU4AAAAcdEVYdFNvZnR3YXJlAEFkb2JlIEZpcmV3b3JrcyBDUzbovLKMAAACTklEQVRoge2YO2gUURSGv7PjEkULO4UoFooIFgtzprAPWMiWKewSTadgYWEhBjHCloGUQtYHaGEjGAQtUmgnZO9YpsqC2NgYIwjRInMscoPrYkzhGTIs8zdnzoP578ewM/eumBmjoMZ+L8BLNUjVVINUTTVI1VSDVE0jA3KgjJuGEE6LyI2iKC6JyBkzWxORF8ADVV0rw1O891ohhCngPnDyL+1PZjabZdkTV1OcQUIIV4CHMf0JvAK+A0eANjAWe1dV9ZGbMY6/kTzPzwHzMV0VkZaqTgLTqjopIi1gNfbnQwhnvbzBEcTMbgFHgXURaRdFsRFCWAa+hhCWi6LYEJE2sB7nbnp5g+9b62KMIU3Tvoh0gQm2Fz0hIt00TftAADCztqO3K8h4jJsAZnZ+sDmQ/wAQkXEc5QnyJcZjACLybLApIk/j5YmheRd5gryLMev1elOqesfMrpvZczO7pqqzvV5vGmgNzbvIDUREXsbLRES6IYTbzWZzMcuyy0mSPA4h3BWRxR3PgXkff6/vSJ7nx83sPXBqoLwJFEACHByofxSRC2mafnYxx/GJxEW9GSofAg7zJwTAa08I8N80doG9HrHx++vvJlcQVV0xs6V/zZjZkqquePpCOdv4OWBrl96WiNwrwdMfJMuyHFjYpb2gqh+8PaG8g9Uc0B+q9WO9FJUCoqrfgBm2X73EOBPrpai0o66qvgU6Me3EvDSVctTdUZIknaIoxhqNRmfv6f+T+1F3vzQy/6LUIFVTDVI11SBVUw1SNdUgVdPIgPwCtt+2JPQRVicAAAAASUVORK5CYII=);
+	background-size: 50px 44px;
+}		</style>
+	</head>
+	<body>
+		<!--头部start-->
+		<div class="header header-bgf">
+		  <ul>
+		    <h1>活动签到</h1>
+		    <a href="javascript:back();" title="" class="back"><img src="../../images/29.png" alt=""/></a>
+		    <a href="javascript:userLocation(true);" class="header-map"></a>
+		  </ul>
+		</div>
+		<!--头部end-->
+		<!--<header id="header">
+			<div class="nvbt iback" onclick="back();"></div>
+			<div class="">活动签到</div>
+			<div class="nvbt ipos" onclick="userLocation(true);"></div>
+		</header>-->
+		<div id="map">地图加载中...</div>
+	</body>
+	<script type="text/javascript" src="../js/immersed.js" ></script>
+</html>

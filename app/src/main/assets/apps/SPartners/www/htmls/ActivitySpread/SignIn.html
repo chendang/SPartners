@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0" />
+<meta name="format-detection" content="telephone=no" />
+<link type="text/css" href="../../css/style.css" rel="stylesheet" />
+<script type="text/javascript" src="../../js/jquery-1.7.min.js"></script>
+<script type="text/javascript" src="../../js/main.js"></script>
+<script src="../../js/pulsClick.js" type="text/javascript" ></script>
+<title>签到</title>
+</head>
+
+<body>
+<!--头部start-->
+<div class="header header-bg">
+  <ul>
+    <h1></h1>
+    <a href="javascript:back();" title="" class="back"><img src="../../images/10.png" alt=""/></a>
+  </ul>
+</div>
+<!--头部end-->
+
+<!--签到头部start-->
+<div class="header-attendance">
+  <a href="javascript:void(0)">
+    <h4>签到</h4>
+    <p>已签到3天</p>   
+  </a>
+  <span>距离礼品还有3天</span>
+</div>
+<!--签到头部end-->
+
+<!--日历start-->
+<div class="date-time">
+  <div id="demo">
+    <div id="ca"></div>
+  </div>
+</div>
+<script src="../../js/calendar.js"></script>
+<script src="../../js/myDate.js"></script>
+<!--日历end-->
+
+<!--签到明细start-->
+<div class="attendance-detail">
+  <h2>签到细则</h2>
+  <ul>
+    <p>1、连续签到3天、7天、15天、22天、30天，均可随机领取最高100元礼包</p>
+    <p>2、连续30天未签到者，后台将清空其会员数据，再次使用需要重新注册</p>
+  </ul>
+</div>
+<!--签到明细end-->
+
+<!--礼包弹窗start-->
+<div class="hover disable"></div>
+<div class="goods-box disable">
+  <p>恭喜你获得连续签到3天大礼包一个</p>
+  <img src="../../images/85.png" alt="" />
+  <a href="javascript:void(0)">领取礼包</a>
+</div>
+<!--礼包弹窗end-->
+</body>
+
+<script src="../../js/mui.min.js"></script>
+<script src="../../js/public.js" type="text/javascript"></script>
+
+
+<script>
+var domainUrl = GetMvcApiDomain(); 
+
+mui.init();
+
+
+ function showContent(id){
+
+ mui.openWindow({
+url:"ActivityDetail.html?id="+id,
+id:'ActivityDetail',
+
+show: {  
+        autoShow: true, //页面loaded事件发生后自动显示，默认为true  
+        aniShow:'zoom-fade-out', //页面显示动画，默认为”slide-in-right“；  
+        duration: 300 //页面动画持续时间，Android平台默认100毫秒，iOS平台默认200毫秒；  
+    }, 
+waiting:{
+      autoShow:true,//自动显示等待框，默认为true
+      title:'正在加载...',//等待对话框上显示的提示内容
+      options:{
+        width:"100%",//等待框背景区域宽度，默认根据内容自动计算合适宽度
+        height:"100%",//等待框背景区域高度，默认根据内容自动计算合适高度
+      }
+     }
+});	
+ 
+ 
+ 
+};
+
+
+
+
+
+</script>
+
+</html>

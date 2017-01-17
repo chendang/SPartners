@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0" />
+<meta name="format-detection" content="telephone=no" />
+<link type="text/css" href="../../css/style.css" rel="stylesheet" />
+<script type="text/javascript" src="../../js/jquery-1.7.min.js"></script>
+<script type="text/javascript" src="../../js/main.js"></script>
+<script src="../../js/pulsClick.js" type="text/javascript" ></script>
+<title>提起申诉</title>
+</head>
+
+<body>
+<!--头部start-->
+<div class="header header-bgf">
+  <ul>
+    <h1>提起申诉</h1>
+    <a href="javascript:back();" title="" class="back"><img src="../../images/29.png" alt=""/></a>
+  </ul>
+</div>
+<!--头部end-->
+
+<!--内容start-->
+<div class="file-complaint">
+  <ul>
+    <h3>申诉步骤：</h3>
+    <p>1、联系任务发布人，索要签到指令</p>
+    <p>2、点击指令签到，输入活动指令即刻签到</p>
+    <p>3、或者到现场找督导索要指令</p>
+  </ul>
+  <ul>
+    <p>联系人：<i>夏小姐</i></p>
+    <p>联系电话：<i>15211112222</i><a href="javascript:void(0)" class="contain">拨打电话</a></p>
+  </ul>
+</div>
+<!--内容end-->
+
+<!--指令弹窗start-->
+<!--<div class="hover disable"></div>
+<div class="box box02 disable">
+  <ul>
+    <img src="../../images/42.png" class="close"/>
+    <div class="directive-box">
+      <h2>请输入指令</h2>
+      <ul>
+        <input type="text" value="" />
+        <input type="text" value="" />
+        <input type="text" value="" />
+        <input type="text" value="" />
+      </ul>
+      <a href="javascript:void(0)">提交</a>
+    </div>
+  </ul>	
+</div>-->
+<!--指令弹窗end-->
+
+<!--电话弹窗start-->
+<div class="hover01 disable"></div>
+<div class="box01 disable">
+  <ul>
+    <img src="../../images/42.png" alt="" class="close01" />
+    <div class="contain-box contain-box01">
+      <h2>152—1111—2222</h2>
+      <a href="javascript:void(0)">拨打</a>
+    </div>
+  </ul>
+</div>
+<!--电话弹窗end-->
+
+<!--签到start-->
+<div class="line50"></div>
+<div class="withdrawals opc">
+  <input type="button" value="指令签到" class="directive" id="MyActivity">
+</div>
+<!--签到end-->
+</body>
+
+<script src="../../js/mui.min.js"></script>
+<script src="../../js/public.js" type="text/javascript"></script>
+
+<script>
+var domainUrl = GetMvcApiDomain(); 
+function plusReady(){
+	
+}
+document.addEventListener('plusready',plusReady,false);
+
+document.getElementById("MyActivity").addEventListener('tap',function () {
+	var bts=["提交","取消"];
+	plus.nativeUI.prompt("请输入指令",function(e){
+		var i=e.index;
+		if(i==0){
+			if(e.value == ""){
+				       plus.nativeUI.toast("请输入正确签到指令",{duration:"long"});
+				return;
+			}
+				plus.nativeUI.toast("已指令签到");
+			clicked('MyActivity.html',true);
+		}
+		outLine( "按\""+((i>=0)?bts[e.index]:"返回")+"\"关闭："+e.value );
+	},"提起申诉","请输入指令",bts);
+
+}); 
+
+</script>
+
+</html>
