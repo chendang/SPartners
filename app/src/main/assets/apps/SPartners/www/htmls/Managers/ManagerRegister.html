@@ -2,8 +2,9 @@
 <html>
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0" />
-<meta name="format-detection" content="telephone=no" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no" />
 <link type="text/css" href="../../css/style.css" rel="stylesheet" />
 <script type="text/javascript" src="../../js/jquery-1.7.min.js"></script>
 <script type="text/javascript" src="../../js/main.js"></script>
@@ -26,11 +27,11 @@
   <ul class="form">
     <li>
       <h4>你在哪所高校？</h4>
-      <input type="text" value="" placeholder="例如：北京化工大学" class="text" />
+      <input type="text" value="" placeholder="例如：北京化工大学" class="text" id="collage"/>
     </li>
     <li>
       <h4>你能够招募多少人？</h4>
-      <input type="text" value=""  class="text"/>
+      <input type="text" value=""  class="text" id="memberCount"/>
     </li>
   </ul>
   <ul class="form01">
@@ -68,11 +69,10 @@ mui.init();
 
 		function RegCheck() {
 
-			var snumber = localStorage.getItem("snumber2");
-			var username = document.getElementById('userTel').value;;
-			var scode = document.getElementById('scode').value;
+			var question1 = document.getElementById('collage').value;;
+			var question2 = document.getElementById('memberCount').value;
 	
-		
+		}
 
 
 

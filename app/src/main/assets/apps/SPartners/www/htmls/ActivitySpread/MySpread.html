@@ -2,7 +2,9 @@
 <html>
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="format-detection" content="telephone=no" />
 <link type="text/css" href="../../css/style.css" rel="stylesheet" />
 <script type="text/javascript" src="../../js/jquery-1.7.min.js"></script>
@@ -105,7 +107,7 @@ getSpreadOnList();
 			var isexpired = 'no';
 			var status = 'unaudit';
 			$.ajax({
-				url: domainUrl + "api/v1/internal/{\"v_my_activity\":{\"pagination\":{\"page\":\"0\",\"limit\":\"10\"},\"isexpired\":\"'" +
+				url: domainUrl + "api/v1/internal/{\"v_my_promotion\":{\"pagination\":{\"page\":\"0\",\"limit\":\"10\"},\"isexpired\":\"'" +
 					isexpired + "'\",\"status\":\"'" +
 					status + "'\",\"columns\":\"id,name,picture,address,startTime,finishTime,status,isexpired\"}}",
 				type: 'get',
@@ -170,7 +172,7 @@ getSpreadOnList();
 			var isexpired = 'no';
 			var status = 'passed';
 			$.ajax({
-				url: domainUrl + "api/v1/internal/{\"v_my_activity\":{\"pagination\":{\"page\":\"0\",\"limit\":\"10\"},\"isexpired\":\"'" +
+				url: domainUrl + "api/v1/internal/{\"v_my_promotion\":{\"pagination\":{\"page\":\"0\",\"limit\":\"10\"},\"isexpired\":\"'" +
 					isexpired + "'\",\"status\":\"'" +
 					status + "'\",\"columns\":\"id,name,picture,address,startTime,finishTime,status,isexpired\"}}",
 				type: 'get',
@@ -200,7 +202,7 @@ getSpreadOnList();
 								inner += '<p>截止日期：2016年10月1日</p>';
 								inner += '</div>';
 								inner += '<div class="m_cell_ft">';
-								inner += '<p>进行中</p>';
+								inner += '<p>已报名</p>';
 								inner += '</div>';
 								inner += '</a>';
 								inner += '</li>';
@@ -234,7 +236,7 @@ getSpreadOnList();
 			var isexpired = 'yes';
 			var status = 'passed';
 			$.ajax({
-				url: domainUrl + "api/v1/internal/{\"v_my_activity\":{\"pagination\":{\"page\":\"0\",\"limit\":\"10\"},\"isexpired\":\"'" +
+				url: domainUrl + "api/v1/internal/{\"v_my_promotion\":{\"pagination\":{\"page\":\"0\",\"limit\":\"10\"},\"isexpired\":\"'" +
 					isexpired + "'\",\"status\":\"'" +
 					status + "'\",\"columns\":\"id,name,picture,address,startTime,finishTime,status,isexpired\"}}",
 				type: 'get',
@@ -264,7 +266,7 @@ getSpreadOnList();
 								inner += '<p>截止日期：2016年10月1日</p>';
 								inner += '</div>';
 								inner += '<div class="m_cell_ft">';
-								inner += '<p>进行中</p>';
+								inner += '<p>已结束</p>';
 								inner += '</div>';
 								inner += '</a>';
 								inner += '</li>';

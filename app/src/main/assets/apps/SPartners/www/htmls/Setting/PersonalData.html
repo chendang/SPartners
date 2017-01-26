@@ -2,7 +2,9 @@
 <html>
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="format-detection" content="telephone=no" />
 <link type="text/css" href="../../css/style.css" rel="stylesheet" />
 <script type="text/javascript" src="../../js/jquery-1.7.min.js"></script>
@@ -41,7 +43,7 @@
       <div class="m_cell_hd"><label><span class="pb360"><i></i>身份证：<em>*必上传</em></span></label></div>
       <div class="m_cell_ft m_cell_primary">
         <ul>
-          <a href="javascript:void(0)" class="upudate-img"><img src="../../images/10.jpg" alt="" /></a>
+          <a href="javascript:void(0);" class="upudate-img" id="filePicker"><img src="../../images/10.jpg" alt="" /></a>
         </ul>
         <ul>
           <a href="javascript:void(0)" class="upudate-img"><img src="../../images/11.jpg" alt="" /></a>
@@ -70,7 +72,7 @@
 </div>
 <!--实名认证end-->
 <!--上传证件start-->
-<div class="hover disable"></div>
+<!--<div class="hover disable"></div>
 <div class="upload-img disable">
   <ul>
     <li><a href="javascript:void(0)">拍照</a></li>
@@ -79,7 +81,7 @@
   <ul>
     <li><a href="javascript:void(0)" class="esc">取消</a></li>
   </ul>
-</div>
+</div>-->
 <!--上传证件end-->
 </body>
 <script src="../../js/mui.min.js"></script>
@@ -88,8 +90,129 @@
 
 <script>
 var domainUrl = GetMvcApiDomain(); 
-
+var server=domainUrl+"/FileUpload/CaseFilePicUpload";
 mui.init();
+
+
+document.getElementById('filePicker').addEventListener('tap', function() { 
+            if (mui.os.plus) { 
+                var a = [{ 
+                    title: "拍照" 
+                }, { 
+                    title: "从手机相册选择" 
+                }]; 
+                plus.nativeUI.actionSheet({ 
+                    title: "上次图片", 
+                    cancel: "取消", 
+                    buttons: a 
+                }, function(b) { /*actionSheet 按钮点击事件*/ 
+                    switch (b.index) { 
+                        case 0: 
+                            break; 
+                        case 1: 
+                            getImage(); /*拍照*/
+                            break; 
+                        case 2: 
+                            galleryImg();/*打开相册*/ 
+                            break; 
+                        default: 
+                            break; 
+                    } 
+                }) 
+            } 
+        }, false); 
+
+function getImage() {  
+            var cmr = plus.camera.getCamera();  
+            cmr.captureImage(function(p) {  
+                    plus.io.resolveLocalFileSystemURL(p, function(entry) {  
+                            var path = entry.toLocalURL();  
+                            
+                            //picIndex += 1;  
+                            appendFile(path); //处理图片的地方  
+                            setTimeout("upload(1)", 1000);  
+                        },  
+                        function(e) {  
+                            alert("读取拍照文件错误：" + e.message);  
+                        });  
+                },  
+                function(e) {  
+                    //                  alert("失败：" + e.message);  
+                }, {  
+                    filename: "_doc/camera/",  
+                    index: 1  
+                });  
+}
+
+
+function galleryImg() {  
+    plus.gallery.pick(function(path) {  
+        
+        //picIndex += 1;  
+        appendFile(path); //处理图片的地方  
+        setTimeout("upload(2)", 1000);  
+    }, function(e) {  
+        console.log("取消选择图片");  
+    }, {  
+        filter: "none",  
+        system: false  
+    });  
+}
+
+var f1=null;
+function appendFile(path) {  
+            var img = new Image();  
+            img.src = path; // 传过来的图片路径在这里用。  
+            img.onload = function() {  
+                var that = this;  
+                //生成比例   
+                var w = that.width,  
+                    h = that.height,  
+                    scale = w / h;  
+                w = 320 || w; //480  你想压缩到多大，改这里  
+                h = w / scale;  
+                //生成canvas  
+                var canvas = document.createElement('canvas');  
+                var ctx = canvas.getContext('2d');  
+                $(canvas).attr({  
+                    width: w,  
+                    height: h  
+                });  
+                ctx.drawImage(that, 0, 0, w, h);  
+                var base64 = canvas.toDataURL('image/jpeg', 1 || 1); //1最清晰，越低越模糊。  
+                f1 = base64;  
+            }  
+}
+
+
+
+function upload(index) { 
+	        var wt=plus.nativeUI.showWaiting();
+            var url = server;  
+            var dataType = 'json';  
+            //发送数据    
+            var data = {  
+                base64File: f1, //base64数据  
+                index: index  
+            };  
+            
+            $.ajax({
+            url : server,
+            type : "post",
+            data : data,
+            success : function(result) {
+            	document.getElementById("snum").value =snum;
+            	num=document.getElementById("snum").value;
+                SaveImage(username,result,num,'0','1');
+                
+            },
+            error : function() {
+                mui.toast("网络错误,请稍后再试!");;
+            }
+        });
+        plus.nativeUI.closeWaiting();
+        
+}
 
 </script>
 </html>

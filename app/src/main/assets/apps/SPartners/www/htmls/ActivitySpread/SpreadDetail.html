@@ -4,8 +4,10 @@
 <meta charset="utf-8">
 <meta name="keywords" content="" />
 <meta name="description" content="" />
-<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
 <meta name="format-detection" content="telephone=no" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
 <link type="text/css" href="../../css/style.css" rel="stylesheet" />
 <script type="text/javascript" src="../../js/jquery-1.7.min.js"></script>
 <script type="text/javascript" src="../../js/main.js"></script>
@@ -41,10 +43,10 @@
 <div class="file-complaint">
   <ul>
     <h4>推广细则</h4>
-    <p>招聘人数:<i id="zprs">20人</i></p>
-    <p>薪酬待遇:<i id="xzdy">10元/单</i></p>
-    <p>职位类别:<i id="zwlb">推广专员</i></p>
-    <p>结算方式:<i>支付宝或微信结算</i></p>
+    <p>招聘人数:<i id="zprs"></i></p>
+    <p>薪酬待遇:<i id="xzdy"></i></p>
+    <p>职位类别:<i id="zwlb"></i></p>
+    <p>结算方式:<i>支付宝</i></p>
   </ul>
   <ul>
     <h4>推广说明</h4>
@@ -58,7 +60,7 @@
 <div class="line50"></div>
 <div class="save-add">
   <ul class="clearfix">
-    <a href="javascript:void(0)" class="fr add-active add-active02">报名推广</a>
+    <a href="javascript:void(0)" id="promotionSignUpId" class="fr add-active add-active02">报名推广</a>
   </ul>
 </div>
 <!--底部end-->
@@ -115,20 +117,70 @@ mui.init();
 
 var actId=getUrlParam("id");
 getSpreadDetail(actId);
+var promotionDetail = "";
+mui.plusReady(function() {
+	//判断活动是否报名
+	$.ajax({
+		url: domainUrl + "api/v1/internal/{\"partner_user_join\":{\"joinProjectId\":\"'"+
+			actId+"'\",\"userId\":\"'"+
+			JSON.parse(localStorage.getItem('userinfo')).id+"'\", \"projectType\":\"'promotion'\",\"columns\":\"status\"}}",
+		type: 'get',
+		dataType: "json",
+		success: function(data) {
+			if(data.status_code == '000000') {
+				//status: '审核通过 passed，未通过 return，审核中 unaudit'
+				if(data.result.status==='unaudit'){
+						$("#promotionSignUpId").addClass("on");
+						$("#promotionSignUpId").text("审核中");
+						$("#promotionSignUpId").DISABLED = true;
+						return;
+				}
+				if(data.result.status==='passed'){
+						$("#promotionSignUpId").addClass("on");
+						$("#promotionSignUpId").text("审核通过");
+						$("#promotionSignUpId").DISABLED = true;
+						return;
+				}
+//				if(data.result.status==='return'){
+						$("#promotionSignUpId").text("报名推广");
+//				}
+			} else {
+				$("#promotionSignUpId").text("报名推广");
+				plus.nativeUI.toast("返回错误,错误码："+data.status_code+"错误信息："+data.result, {
+					duration: "long"
+				});
+			}
 
+		},
+		error: function() {
+			plus.nativeUI.toast("网络错误，请稍后再试", {
+				duration: "long"
+			});
+		}
+	})
 
+	$("#promotionSignUpId").click(function() {
+		if($("#promotionSignUpId").hasClass("on")) {
+			return;
+		} else {
+			promotionSignUp();
+		}
+	});
+	})
 function getSpreadDetail(id) {
 	
 	          $.ajax({
-             	 url: domainUrl + "api/v1/internal/{\"partner_promotion_info\":{\"id\":\"'08333107d61411e6b81700163e0c009c'\",\"columns\":\"id,name, picture , address , startTime , finishTime , registrationTime , jobType , remuneration , maxPartnerNum , genderRequirement , task , linkmanID , linkmanName , linkmanPhone ,apprveToJoin , joinedPartnerNum \"}}",
+             	 url: domainUrl + "api/v1/internal/{\"partner_promotion_info\":{\"id\":\"'"+
+             	 actId+"'\",\"columns\":\"id,name, picture , address , startTime , finishTime , registrationTime , jobType , remuneration , maxPartnerNum , genderRequirement , task , linkmanID , linkmanName , linkmanPhone ,apprveToJoin , joinedPartnerNum \"}}",
                 type: 'get',
                 dataType: "json",
                 success: function (data) {
                  if (data.status_code=='000000'){
+                 	promotionDetail = data.result;
                  document.getElementById('title').innerHTML=data.result.name;
                  document.getElementById('actdate').innerHTML=data.result.startTime;
-                 document.getElementById('zprs').innerHTML=data.result.maxPartnerNum;
-                 document.getElementById('xzdy').innerHTML=data.result.remuneration;
+                 document.getElementById('zprs').innerHTML=data.result.maxPartnerNum+"人";
+                 document.getElementById('xzdy').innerHTML=data.result.remuneration+"元/单";
                  document.getElementById('zwlb').innerHTML=data.result.jobType;
                  document.getElementById('gznr').innerHTML=data.result.task;
                  document.getElementById('gzdz').innerHTML=data.result.address;
@@ -136,7 +188,7 @@ function getSpreadDetail(id) {
                  
                  }
                  else{
-                 plus.nativeUI.toast(data.result, {
+                 plus.nativeUI.toast("返回错误,错误码："+data.status_code+"错误信息："+data.result, {
 								 duration: "long"
 						     });                	
                  }
@@ -154,15 +206,14 @@ function getSpreadDetail(id) {
 
 
 
-function activitySignUp(){
-	
+function promotionSignUp(){
 							var jsonData = {
 								"partner_user_join": {
 									"id": "'"+Date.parse(new Date())+"'",
 									"userID": "'"+JSON.parse(localStorage.getItem('userinfo')).id+"'",
 									"joinProjectId": "'"+actId+"'",
-									"projectName": "'"+actDetail.name+"'",
-									"projectType": "'activity'",
+									"projectName": "'"+promotionDetail.name+"'",
+									"projectType": "'promotion'",
 									"joinType": "'selfJoing'"
 //									"promotionInviteCode ": "'{邀请码}'",
 //									"managerID":"'{经理人id}'",
@@ -186,16 +237,15 @@ function activitySignUp(){
 //										  $(this).removeClass("on");
 //										  $(this).text("报名参加");
 //										}else{
-										  $("#SignUpBtn").addClass("on");
-										  $("#SignUpBtn").text("审核中");
-										  $("#SignUpBtn").DISABLED=true;
+										  $("#promotionSignUpId").addClass("on");
+										  $("#promotionSignUpId").text("审核中");
+										  $("#promotionSignUpId").DISABLED=true;
 //										  $(".join-success").show();
 //										}
 //									  });
 								 }
                  else{
-                 	alert("error res:"+data.status_code);
-                 plus.nativeUI.toast(data.result, {
+                 plus.nativeUI.toast("返回错误,错误码："+data.status_code+"错误信息："+data.result, {
 								 duration: "long"
 						     });                	
                  }

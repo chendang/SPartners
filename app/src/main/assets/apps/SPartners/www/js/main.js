@@ -68,7 +68,7 @@ $(document).ready(function(){
   
   
   //注册用户协议选中
-  $(".resiger .form01 span i").click(function(e){
+  /*$(".resiger .form01 span i input").click(function(e){
     e.preventDefault();
 	if($(this).hasClass("on")){
 	  $(".resiger .form01 span i.on").removeClass("on")
@@ -77,7 +77,7 @@ $(document).ready(function(){
 	  $(this).addClass("on");
 	  $(this).find("input").attr("checked",true);
 	}
-  });
+  });*/
   
   //有问必答弹窗关闭
   $(".close").click(function(){
@@ -94,16 +94,16 @@ $(document).ready(function(){
   });
   
   //申请调差
-  $(".application-investigation .form01 input").click(function(){
+  /*$(".application-investigation .form01 input").click(function(){
     $(".box,.hover").show();
   });
-  
+  */
   //经理人审核通过
-  $(".active-type a").click(function(){
+ /* $(".active-type a").click(function(){
     $(this).addClass("on").siblings().removeClass("on");
     $(".active-type-list > ul").eq($(".active-type a").index(this)).show().siblings().hide();
   });
- 
+ */
   //支付宝提现选中
   $(".bound-alipay .form02 a").click(function(){
     if($(".bound-alipay .form02 a").hasClass("on")){
@@ -136,12 +136,12 @@ $(document).ready(function(){
   });
   
   //登录上传图片
-  $(".upudate-img").click(function(){
+  /*$(".upudate-img").click(function(){
     $(".hover,.upload-img").show();  
   });
   $(".upload-img .esc").click(function(){
     $(".hover,.upload-img").hide();  
-  });
+  });*/
   
   //联系我们
   $(".contain").click(function(){
@@ -159,10 +159,10 @@ $(document).ready(function(){
     $(".down-info").slideToggle();
   });  
   
-  //实名认证弹窗
+ /* //实名认证弹窗
   $(".submit").click(function(){
     $(".hover01,.box01").show();  
-  });
+  });*/
   
   //我的推广
 //$(".active-type02 a").click(function(){
@@ -196,16 +196,6 @@ $(document).ready(function(){
   
 
   
-  $(".add-active02").click(function(){
-    if($(this).hasClass("on")){
-	  $(this).removeClass("on");
-	  $(this).text("报名推广");
-	}else{
-	  $(this).addClass("on");
-	  $(this).text("审核中");
-	  $(".join-success").show();
-	}
-  });
   
   //我的二维码
   $(".add-active04").click(function(){

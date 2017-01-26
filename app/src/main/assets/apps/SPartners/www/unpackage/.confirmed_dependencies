@@ -1,657 +1,704 @@
 {
-	"login.html": {
-		"resources": [
-			"img/2.png",
-			"js/main.js",
-			"js/jquery-1.7.min.js",
-			"img/8.png",
-			"js/public.js",
-			"css/style.css",
-			"js/pulsClick.js",
-			"img/7.png",
-			"img/3.png",
-			"js/type.js",
-			"img/1.png",
-			"js/mui.min.js",
-			"img/1.jpg",
-			"img/6.png",
-			"css/my_mui_alter.css",
-			"images/2.png",
-			"js/common.js",
-			"images/3.png",
-			"images/1.png",
-			"images/8.png",
-			"images/1.jpg",
-			"css/mui.min.css",
-			"images/6.png",
-			"images/7.png",
-			"images/5.png",
-			"images/4.png"
-		],
-		"refer": [
-			"Main.html",
-			"SMSLogin.html",
-			"htmls/Register/ForgetPassword.html",
-			"index.html"
-		]
-	},
-	"index.html": {
-		"resources": [
-			"js/main.js",
-			"images/67.png",
-			"images/71.png",
-			"js/jquery-1.7.min.js",
-			"images/64.png",
-			"js/slider.js",
-			"js/public.js",
-			"images/69.png",
-			"images/43.png",
-			"js/pulsClick.js",
-			"images/72.png",
-			"images/68.png",
-			"images/3.jpg",
-			"images/44.png",
-			"images/63.png",
-			"images/70.png",
-			"images/65.png",
-			"images/12.jpg",
-			"images/66.png",
-			"images/2.jpg",
-			"css/style.css",
-			"js/mui.min.js",
-			"css/mui.min.css",
-			"js/pulsCustomer.js",
-			"images/35.png",
-			"images/37.png",
-			"images/34.png",
-			"images/36.png",
-			"images/38.png",
-			"images/10.png",
-			"images/58.png",
-			"images/42.png",
-			"images/59.png",
-			"images/31.png",
-			"images/55.png",
-			"images/56.png",
-			"images/54.png",
-			"images/32.png",
-			"images/46.png",
-			"images/57.png",
-			"images/1.png",
-			"images/33.png",
-			"js/loadding.js",
-			"css/loadding.css"
-		],
-		"refer": [
-			"htmls/ActivitySpread/MobileActivitySelected.html",
-			"htmls/MyUserInfo/MyMain.html",
-			"htmls/MyMessage/MyMessage.html",
-			"htmls/MyUserInfo/MyReward.html",
-			"htmls/MyUserInfo/MyFavorite.html",
-			"htmls/MyUserInfo/MyInviteCode.html",
-			"htmls/MyMessage/MyMessageAskAnswer.html",
-			"htmls/MyMessage/MyMessageSysInfo.html",
-			"htmls/Setting/MySetting.html",
-			"htmls/ActivitySpread/ActivitySelectedMain.html",
-			"htmls/ActivitySpread/MyActivity.html",
-			"htmls/ActivitySpread/ActivityDetail.html",
-			"htmls/ActivitySpread/MySpread.html",
-			"htmls/ActivitySpread/SignIn.html",
-			"htmls/ActivitySpread/ActivityRanking.html",
-			"htmls/ActivitySpread/SpreadRanking.html"
-		]
-	},
-	"htmls/MyUserInfo/MyMain.html": {
-		"resources": [
-			"images/58.png",
-			"images/55.png",
-			"images/1.png",
-			"images/42.png",
-			"images/56.png",
-			"images/57.png",
-			"images/38.png",
-			"images/54.png",
-			"images/46.png",
-			"images/59.png",
-			"images/33.png",
-			"images/2.jpg",
-			"images/36.png",
-			"js/main.js",
-			"js/jquery-1.7.min.js",
-			"css/style.css",
-			"images/35.png"
-		],
-		"refer": []
-	},
-	"htmls/MyMessage/MyMessage.html": {
-		"resources": [
-			"images/33.png",
-			"images/2.jpg",
-			"images/31.png",
-			"images/36.png",
-			"images/32.png",
-			"images/10.png",
-			"js/main.js",
-			"js/jquery-1.7.min.js",
-			"css/style.css"
-		],
-		"refer": []
-	},
-	"Main.html": {
-		"resources": [
-			"index.html",
-			"js/mui.min.js",
-			"images/35.png",
-			"css/mui.min.css",
-			"css/style.css",
-			"images/37.png",
-			"images/34.png",
-			"images/36.png",
-			"js/main.js",
-			"js/jquery-1.7.min.js"
-		],
-		"refer": [
-			"index.html",
-			"htmls/MyUserInfo/MyMain.html",
-			"htmls/MyMessage/MyMessage.html",
-			"htmls/ActivitySpread/MobileActivitySelected.html"
-		]
-	},
-	"htmls/ActivitySpread/MobileActivitySelected.html": {
-		"resources": [
-			"images/29.png",
-			"images/7.jpg",
-			"js/main.js",
-			"js/jquery-1.7.min.js",
-			"css/style.css",
-			"images/43.png",
-			"js/pulsClick.js",
-			"images/3.jpg",
-			"images/44.png",
-			"js/mui.min.js",
-			"js/public.js",
-			"images/61.png"
-		],
-		"refer": [
-			"htmls/ActivitySpread/ActivityDetail.html"
-		]
-	},
-	"SMSLogin.html": {
-		"resources": [
-			"images/2.jpg",
-			"images/13.png",
-			"css/style.css",
-			"images/11.png",
-			"images/10.png",
-			"js/main.js",
-			"js/common.js",
-			"js/jquery-1.7.min.js",
-			"js/pulsClick.js",
-			"js/mui.min.js",
-			"js/public.js",
-			"images/12.png",
-			"images/14.png"
-		],
-		"refer": [
-			"index.html"
-		]
-	},
-	"htmls/Register/ForgetPassword.html": {
-		"resources": [
-			"images/2.jpg",
-			"images/12.png",
-			"images/13.png",
-			"images/11.png",
-			"images/14.png",
-			"images/10.png",
-			"js/main.js",
-			"js/jquery-1.7.min.js",
-			"js/mui.min.js",
-			"js/public.js",
-			"css/style.css",
-			"js/pulsClick.js"
-		],
-		"refer": [
-			"htmls/Register/PasswordReset.html",
-			"htmls/Register/TokenNotReceiveHint.html",
-			"htmls/Common/TokenNotReceiveHint.html"
-		]
-	},
-	"htmls/Register/RegisterFirst.html": {
-		"resources": [
-			"images/2.jpg",
-			"images/12.png",
-			"images/19.png",
-			"images/21.png",
-			"images/13.png",
-			"images/11.png",
-			"images/15.png",
-			"images/17.png",
-			"images/14.png",
-			"images/10.png",
-			"images/18.png",
-			"images/16.png",
-			"js/main.js",
-			"js/jquery-1.7.min.js",
-			"js/public.js",
-			"css/style.css",
-			"js/pulsClick.js",
-			"js/mui.min.js",
-			"images/22.png"
-		],
-		"refer": [
-			"htmls/Register/TokenNotReceiveHint.html",
-			"htmls/Register/RegisterBaseInfo.html"
-		]
-	},
-	"htmls/Register/TokenNotReceiveHint.html": {
-		"resources": [
-			"js/main.js",
-			"images/2.jpg",
-			"js/jquery-1.7.min.js",
-			"css/style.css",
-			"images/10.png"
-		],
-		"refer": []
-	},
-	"htmls/MyUserInfo/MyReward.html": {
-		"resources": [
-			"images/48.png",
-			"js/mui.min.js",
-			"js/pulsClick.js",
-			"js/main.js",
-			"images/2.jpg",
-			"js/jquery-1.7.min.js",
-			"css/style.css",
-			"images/3.jpg",
-			"images/10.png",
-			"js/public.js"
-		],
-		"refer": [
-			"htmls/MyUserInfo/MyAlipayWithdraw.html"
-		]
-	},
-	"htmls/MyUserInfo/MyFavorite.html": {
-		"resources": [
-			"js/main.js",
-			"images/29.png",
-			"js/jquery-1.7.min.js",
-			"js/mui.min.js",
-			"css/style.css",
-			"images/43.png",
-			"js/pulsClick.js",
-			"images/3.jpg",
-			"images/44.png"
-		],
-		"refer": []
-	},
-	"htmls/MyUserInfo/MyAlipayWithdraw.html": {
-		"resources": [
-			"js/main.js",
-			"images/29.png",
-			"js/jquery-1.7.min.js",
-			"images/21.png",
-			"css/style.css",
-			"images/45.png",
-			"js/pulsClick.js",
-			"js/mui.min.js",
-			"js/public.js"
-		],
-		"refer": []
-	},
-	"htmls/MyUserInfo/MyInviteCode.html": {
-		"resources": [
-			"js/main.js",
-			"js/jquery-1.7.min.js",
-			"js/public.js",
-			"css/style.css",
-			"js/pulsClick.js",
-			"images/52.png",
-			"images/49.png",
-			"js/mui.min.js",
-			"images/50.png",
-			"images/53.png",
-			"images/1.jpg",
-			"images/51.png",
-			"images/6.jpg"
-		],
-		"refer": []
-	},
-	"htmls/MyMessage/MyMessageAskAnswer.html": {
-		"resources": [
-			"images/29.png",
-			"js/mui.min.js",
-			"js/main.js",
-			"js/jquery-1.7.min.js",
-			"images/42.png",
-			"css/style.css",
-			"js/pulsClick.js",
-			"images/40.png",
-			"images/39.png",
-			"images/41.png",
-			"js/public.js"
-		],
-		"refer": []
-	},
-	"htmls/Setting/MySettingMessage.html": {
-		"resources": [
-			"js/main.js",
-			"images/29.png",
-			"js/jquery-1.7.min.js",
-			"js/mui.min.js",
-			"js/public.js",
-			"css/style.css",
-			"js/pulsClick.js"
-		],
-		"refer": []
-	},
-	"htmls/Setting/MySetting.html": {
-		"resources": [
-			"images/29.png",
-			"js/main.js",
-			"js/jquery-1.7.min.js",
-			"js/mui.min.js",
-			"js/public.js",
-			"css/style.css",
-			"js/pulsClick.js",
-			"images/46.png"
-		],
-		"refer": [
-			"htmls/Setting/MySettingMessage.html",
-			"htmls/Setting/MySettingPasswordModify.html",
-			"htmls/Setting/MySettingFeedBack.html"
-		]
-	},
-	"htmls/Setting/MySettingFeedBack.html": {
-		"resources": [
-			"js/main.js",
-			"images/29.png",
-			"js/jquery-1.7.min.js",
-			"js/mui.min.js",
-			"js/public.js",
-			"css/style.css",
-			"js/pulsClick.js"
-		],
-		"refer": []
-	},
-	"htmls/MyMessage/MyMessageSysInfo.html": {
-		"resources": [
-			"images/29.png",
-			"js/main.js",
-			"js/jquery-1.7.min.js",
-			"js/mui.min.js",
-			"js/public.js",
-			"css/style.css",
-			"js/pulsClick.js"
-		],
-		"refer": []
-	},
-	"htmls/Register/PasswordReset.html": {
-		"resources": [
-			"images/15.png",
-			"images/17.png"
-		],
-		"refer": []
-	},
-	"htmls/Register/RegisterBaseInfo.html": {
-		"resources": [
-			"images/23.png",
-			"images/27.png",
-			"images/25.png",
-			"images/24.png",
-			"images/26.png",
-			"images/28.png",
-			"js/main.js",
-			"images/2.jpg",
-			"js/jquery-1.7.min.js",
-			"js/mui.min.js",
-			"js/public.js",
-			"css/style.css",
-			"js/pulsClick.js",
-			"images/10.png"
-		],
-		"refer": [
-			"index.html"
-		]
-	},
-	"htmls/Setting/MySettingPasswordModify.html": {
-		"resources": [
-			"js/main.js",
-			"images/29.png",
-			"js/jquery-1.7.min.js",
-			"js/mui.min.js",
-			"js/public.js",
-			"css/style.css",
-			"js/pulsClick.js"
-		],
-		"refer": []
-	},
-	"htmls/ActivitySpread/ActivitySelectedMain.html": {
-		"resources": [
-			"images/17.jpg",
-			"images/18.jpg",
-			"images/29.png",
-			"js/mui.min.js",
-			"js/pulsClick.js",
-			"images/16.jpg",
-			"js/main.js",
-			"js/jquery-1.7.min.js",
-			"js/public.js",
-			"css/style.css"
-		],
-		"refer": [
-			"htmls/ActivitySpread/TMallActivitySelected.html",
-			"htmls/ActivitySpread/MobileActivitySelected.html"
-		]
-	},
-	"htmls/ActivitySpread/MyActivity.html": {
-		"resources": [
-			"js/main.js",
-			"images/29.png",
-			"js/jquery-1.7.min.js",
-			"js/mui.min.js",
-			"js/public.js",
-			"css/style.css",
-			"images/43.png",
-			"js/pulsClick.js",
-			"images/62.png",
-			"images/3.jpg",
-			"images/44.png"
-		],
-		"refer": []
-	},
-	"htmls/ActivitySpread/ActivityDetail.html": {
-		"resources": [
-			"images/49.png",
-			"images/42.png",
-			"images/50.png",
-			"images/76.png",
-			"images/53.png",
-			"images/51.png",
-			"images/75.png",
-			"images/77.png",
-			"images/52.png",
-			"images/15.jpg",
-			"images/14.jpg",
-			"js/main.js",
-			"js/jquery-1.7.min.js",
-			"js/public.js",
-			"css/style.css",
-			"images/43.png",
-			"images/44.png",
-			"images/29.png",
-			"js/mui.min.js",
-			"images/79.png",
-			"images/78.png"
-		],
-		"refer": []
-	},
-	"htmls/ActivitySpread/MySpread.html": {
-		"resources": [
-			"js/main.js",
-			"images/29.png",
-			"js/jquery-1.7.min.js",
-			"js/mui.min.js",
-			"js/public.js",
-			"css/style.css",
-			"js/pulsClick.js",
-			"images/3.jpg"
-		],
-		"refer": [
-			"htmls/ActivitySpread/SpreadDetail.html"
-		]
-	},
-	"htmls/MyUserInfo/MyManagerApplySucc.html": {
-		"resources": [
-			"js/main.js",
-			"images/29.png",
-			"images/5.jpg",
-			"js/jquery-1.7.min.js",
-			"js/mui.min.js",
-			"js/public.js",
-			"css/style.css",
-			"js/pulsClick.js"
-		],
-		"refer": [
-			"htmls/ActivitySpread/ActivityDetail.html",
-			"htmls/ActivitySpread/SpreadDetail.html"
-		]
-	},
-	"htmls/Setting/RealNameAuth.html": {
-		"resources": [
-			"images/60.png",
-			"js/main.js",
-			"images/9.jpg",
-			"images/8.jpg",
-			"images/29.png",
-			"js/jquery-1.7.min.js",
-			"images/42.png",
-			"css/style.css",
-			"js/pulsClick.js"
-		],
-		"refer": []
-	},
-	"htmls/ActivitySpread/SpreadDetail.html": {
-		"resources": [
-			"js/main.js",
-			"js/jquery-1.7.min.js",
-			"js/public.js",
-			"css/style.css",
-			"js/pulsClick.js",
-			"images/52.png",
-			"images/49.png",
-			"images/29.png",
-			"images/42.png",
-			"js/mui.min.js",
-			"images/50.png",
-			"images/76.png",
-			"images/53.png",
-			"images/51.png",
-			"images/15.jpg",
-			"images/14.jpg"
-		],
-		"refer": []
-	},
-	"htmls/Managers/ManagerRegister.html": {
-		"resources": [
-			"js/main.js",
-			"images/29.png",
-			"js/jquery-1.7.min.js",
-			"js/mui.min.js",
-			"images/42.png",
-			"js/public.js",
-			"css/style.css",
-			"js/pulsClick.js",
-			"images/22.png"
-		],
-		"refer": []
-	},
-	"htmls/ActivitySpread/TMallActivitySelected.html": {
-		"resources": [
-			"js/main.js",
-			"js/jquery-1.7.min.js",
-			"js/mui.min.js",
-			"js/public.js",
-			"images/61.png",
-			"js/pulsClick.js",
-			"images/7.jpg",
-			"images/29.png",
-			"css/style.css",
-			"images/43.png",
-			"images/44.png"
-		]
-	},
-	"htmls/ActivitySpread/SignIn.html": {
-		"resources": [
-			"images/85.png",
-			"images/86.png",
-			"images/84.png",
-			"js/mui.min.js",
-			"js/pulsClick.js",
-			"images/81.png",
-			"js/myDate.js",
-			"js/calendar.js",
-			"images/23.jpg",
-			"js/main.js",
-			"images/2.jpg",
-			"js/jquery-1.7.min.js",
-			"js/public.js",
-			"css/style.css",
-			"images/10.png"
-		]
-	},
-	"htmls/ActivitySpread/ActivityRanking.html": {
-		"resources": [
-			"js/main.js",
-			"images/2.jpg",
-			"js/jquery-1.7.min.js",
-			"js/mui.min.js",
-			"js/public.js",
-			"images/22.jpg",
-			"css/style.css",
-			"js/pulsClick.js",
-			"images/4.jpg",
-			"images/10.png"
-		]
-	},
-	"htmls/Setting/PersonalData.html": {
-		"resources": [
-			"images/60.png",
-			"js/main.js",
-			"images/9.jpg",
-			"images/8.jpg",
-			"images/29.png",
-			"images/11.jpg",
-			"images/10.jpg",
-			"js/jquery-1.7.min.js",
-			"js/mui.min.js",
-			"js/public.js",
-			"css/style.css",
-			"js/pulsClick.js"
-		]
-	},
-	"htmls/ActivitySpread/Serch.html": {
-		"resources": [
-			"js/main.js",
-			"js/jquery-1.7.min.js",
-			"images/42.png",
-			"css/style.css",
-			"js/pulsClick.js",
-			"images/65.png"
-		]
-	},
-	"htmls/ActivitySpread/SpreadRanking.html": {
-		"resources": [
-			"js/main.js",
-			"images/2.jpg",
-			"js/jquery-1.7.min.js",
-			"js/mui.min.js",
-			"js/public.js",
-			"images/22.jpg",
-			"css/style.css",
-			"js/pulsClick.js",
-			"images/4.jpg",
-			"images/10.png"
-		]
-	}
+  "login.html": {
+    "resources": [
+      "img/2.png",
+      "js/main.js",
+      "js/jquery-1.7.min.js",
+      "img/8.png",
+      "js/public.js",
+      "css/style.css",
+      "js/pulsClick.js",
+      "img/7.png",
+      "img/3.png",
+      "js/type.js",
+      "img/1.png",
+      "js/mui.min.js",
+      "img/1.jpg",
+      "img/6.png",
+      "css/my_mui_alter.css",
+      "images/2.png",
+      "js/common.js",
+      "images/3.png",
+      "images/1.png",
+      "images/8.png",
+      "images/1.jpg",
+      "css/mui.min.css",
+      "images/6.png",
+      "images/7.png",
+      "images/5.png",
+      "images/4.png"
+    ],
+    "refer": [
+      "Main.html",
+      "SMSLogin.html",
+      "htmls/Register/ForgetPassword.html",
+      "index.html"
+    ]
+  },
+  "index.html": {
+    "resources": [
+      "js/main.js",
+      "images/67.png",
+      "images/71.png",
+      "js/jquery-1.7.min.js",
+      "images/64.png",
+      "js/slider.js",
+      "js/public.js",
+      "images/69.png",
+      "images/43.png",
+      "js/pulsClick.js",
+      "images/72.png",
+      "images/68.png",
+      "images/3.jpg",
+      "images/44.png",
+      "images/63.png",
+      "images/70.png",
+      "images/65.png",
+      "images/12.jpg",
+      "images/66.png",
+      "images/2.jpg",
+      "css/style.css",
+      "js/mui.min.js",
+      "css/mui.min.css",
+      "js/pulsCustomer.js",
+      "images/35.png",
+      "images/37.png",
+      "images/34.png",
+      "images/36.png",
+      "images/38.png",
+      "images/10.png",
+      "images/58.png",
+      "images/42.png",
+      "images/59.png",
+      "images/31.png",
+      "images/55.png",
+      "images/56.png",
+      "images/54.png",
+      "images/32.png",
+      "images/46.png",
+      "images/57.png",
+      "images/1.png",
+      "images/33.png",
+      "js/loadding.js",
+      "css/loadding.css",
+      "css/libs/CSSRESET.css",
+      "images/img_index/icon_hot.png",
+      "images/img_index/icon_home_at.png",
+      "css/index.css",
+      "css/common.css",
+      "images/img_index/icon_mine.png",
+      "images/img_index/icon_calinda.png",
+      "images/img_index/icon_search.png",
+      "images/img_index/tg_pic_1.png",
+      "images/img_index/active_pic_3.png",
+      "images/img_index/active_pic_1.png",
+      "images/img_index/icon_msg.png",
+      "images/img_index/tg_pic_2.png",
+      "css/libs/swiper.min.css",
+      "images/img_index/active_pic_2.png",
+      "images/img_index/index_banner_pic_1.jpg",
+      "images/img_index/icon_time_y.png",
+      "images/img_index/icon_location_y.png",
+      "images/img_index/index_hot_pic_1.png",
+      "js/libs/swiper.jquery.min.js",
+      "images/img_index/tg_pic_3.png",
+      "images/img_index/icon_location.png"
+    ],
+    "refer": [
+      "htmls/ActivitySpread/MobileActivitySelected.html",
+      "htmls/MyUserInfo/MyMain.html",
+      "htmls/MyMessage/MyMessage.html",
+      "htmls/MyUserInfo/MyReward.html",
+      "htmls/MyUserInfo/MyFavorite.html",
+      "htmls/MyUserInfo/MyInviteCode.html",
+      "htmls/MyMessage/MyMessageAskAnswer.html",
+      "htmls/MyMessage/MyMessageSysInfo.html",
+      "htmls/Setting/MySetting.html",
+      "htmls/ActivitySpread/ActivitySelectedMain.html",
+      "htmls/ActivitySpread/MyActivity.html",
+      "htmls/ActivitySpread/ActivityDetail.html",
+      "htmls/ActivitySpread/MySpread.html",
+      "htmls/ActivitySpread/SignIn.html",
+      "htmls/ActivitySpread/ActivityRanking.html",
+      "htmls/ActivitySpread/SpreadRanking.html"
+    ]
+  },
+  "htmls/MyUserInfo/MyMain.html": {
+    "resources": [
+      "images/58.png",
+      "images/55.png",
+      "images/1.png",
+      "images/42.png",
+      "images/56.png",
+      "images/57.png",
+      "images/38.png",
+      "images/54.png",
+      "images/46.png",
+      "images/59.png",
+      "images/33.png",
+      "images/2.jpg",
+      "images/36.png",
+      "js/main.js",
+      "js/jquery-1.7.min.js",
+      "css/style.css",
+      "images/35.png"
+    ],
+    "refer": []
+  },
+  "htmls/MyMessage/MyMessage.html": {
+    "resources": [
+      "images/33.png",
+      "images/2.jpg",
+      "images/31.png",
+      "images/36.png",
+      "images/32.png",
+      "images/10.png",
+      "js/main.js",
+      "js/jquery-1.7.min.js",
+      "css/style.css"
+    ],
+    "refer": []
+  },
+  "Main.html": {
+    "resources": [
+      "index.html",
+      "js/mui.min.js",
+      "images/35.png",
+      "css/mui.min.css",
+      "css/style.css",
+      "images/37.png",
+      "images/34.png",
+      "images/36.png",
+      "js/main.js",
+      "js/jquery-1.7.min.js"
+    ],
+    "refer": [
+      "index.html",
+      "htmls/MyUserInfo/MyMain.html",
+      "htmls/MyMessage/MyMessage.html",
+      "htmls/ActivitySpread/MobileActivitySelected.html"
+    ]
+  },
+  "htmls/ActivitySpread/MobileActivitySelected.html": {
+    "resources": [
+      "images/29.png",
+      "images/7.jpg",
+      "js/main.js",
+      "js/jquery-1.7.min.js",
+      "css/style.css",
+      "images/43.png",
+      "js/pulsClick.js",
+      "images/3.jpg",
+      "images/44.png",
+      "js/mui.min.js",
+      "js/public.js",
+      "images/61.png",
+      "css/mui.min.css",
+      "js/mui.js"
+    ],
+    "refer": [
+      "htmls/ActivitySpread/ActivityDetail.html"
+    ]
+  },
+  "SMSLogin.html": {
+    "resources": [
+      "images/2.jpg",
+      "images/13.png",
+      "css/style.css",
+      "images/11.png",
+      "images/10.png",
+      "js/main.js",
+      "js/common.js",
+      "js/jquery-1.7.min.js",
+      "js/pulsClick.js",
+      "js/mui.min.js",
+      "js/public.js",
+      "images/12.png",
+      "images/14.png"
+    ],
+    "refer": [
+      "index.html"
+    ]
+  },
+  "htmls/Register/ForgetPassword.html": {
+    "resources": [
+      "images/2.jpg",
+      "images/12.png",
+      "images/13.png",
+      "images/11.png",
+      "images/14.png",
+      "images/10.png",
+      "js/main.js",
+      "js/jquery-1.7.min.js",
+      "js/mui.min.js",
+      "js/public.js",
+      "css/style.css",
+      "js/pulsClick.js"
+    ],
+    "refer": [
+      "htmls/Register/PasswordReset.html",
+      "htmls/Register/TokenNotReceiveHint.html",
+      "htmls/Common/TokenNotReceiveHint.html"
+    ]
+  },
+  "htmls/Register/RegisterFirst.html": {
+    "resources": [
+      "images/2.jpg",
+      "images/12.png",
+      "images/19.png",
+      "images/21.png",
+      "images/13.png",
+      "images/11.png",
+      "images/15.png",
+      "images/17.png",
+      "images/14.png",
+      "images/10.png",
+      "images/18.png",
+      "images/16.png",
+      "js/main.js",
+      "js/jquery-1.7.min.js",
+      "js/public.js",
+      "css/style.css",
+      "js/pulsClick.js",
+      "js/mui.min.js",
+      "images/22.png"
+    ],
+    "refer": [
+      "htmls/Register/TokenNotReceiveHint.html",
+      "htmls/Register/RegisterBaseInfo.html"
+    ]
+  },
+  "htmls/Register/TokenNotReceiveHint.html": {
+    "resources": [
+      "js/main.js",
+      "images/2.jpg",
+      "js/jquery-1.7.min.js",
+      "css/style.css",
+      "images/10.png"
+    ],
+    "refer": []
+  },
+  "htmls/MyUserInfo/MyReward.html": {
+    "resources": [
+      "images/48.png",
+      "js/mui.min.js",
+      "js/pulsClick.js",
+      "js/main.js",
+      "images/2.jpg",
+      "js/jquery-1.7.min.js",
+      "css/style.css",
+      "images/3.jpg",
+      "images/10.png",
+      "js/public.js"
+    ],
+    "refer": [
+      "htmls/MyUserInfo/MyAlipayWithdraw.html"
+    ]
+  },
+  "htmls/MyUserInfo/MyFavorite.html": {
+    "resources": [
+      "js/main.js",
+      "images/29.png",
+      "js/jquery-1.7.min.js",
+      "js/mui.min.js",
+      "css/style.css",
+      "images/43.png",
+      "js/pulsClick.js",
+      "images/3.jpg",
+      "images/44.png"
+    ],
+    "refer": []
+  },
+  "htmls/MyUserInfo/MyAlipayWithdraw.html": {
+    "resources": [
+      "js/main.js",
+      "images/29.png",
+      "js/jquery-1.7.min.js",
+      "images/21.png",
+      "css/style.css",
+      "images/45.png",
+      "js/pulsClick.js",
+      "js/mui.min.js",
+      "js/public.js"
+    ],
+    "refer": []
+  },
+  "htmls/MyUserInfo/MyInviteCode.html": {
+    "resources": [
+      "js/main.js",
+      "js/jquery-1.7.min.js",
+      "js/public.js",
+      "css/style.css",
+      "js/pulsClick.js",
+      "images/52.png",
+      "images/49.png",
+      "js/mui.min.js",
+      "images/50.png",
+      "images/53.png",
+      "images/1.jpg",
+      "images/51.png",
+      "images/6.jpg"
+    ],
+    "refer": []
+  },
+  "htmls/MyMessage/MyMessageAskAnswer.html": {
+    "resources": [
+      "images/29.png",
+      "js/mui.min.js",
+      "js/main.js",
+      "js/jquery-1.7.min.js",
+      "images/42.png",
+      "css/style.css",
+      "js/pulsClick.js",
+      "images/40.png",
+      "images/39.png",
+      "images/41.png",
+      "js/public.js"
+    ],
+    "refer": []
+  },
+  "htmls/Setting/MySettingMessage.html": {
+    "resources": [
+      "js/main.js",
+      "images/29.png",
+      "js/jquery-1.7.min.js",
+      "js/mui.min.js",
+      "js/public.js",
+      "css/style.css",
+      "js/pulsClick.js"
+    ],
+    "refer": []
+  },
+  "htmls/Setting/MySetting.html": {
+    "resources": [
+      "images/29.png",
+      "js/main.js",
+      "js/jquery-1.7.min.js",
+      "js/mui.min.js",
+      "js/public.js",
+      "css/style.css",
+      "js/pulsClick.js",
+      "images/46.png"
+    ],
+    "refer": [
+      "htmls/Setting/MySettingMessage.html",
+      "htmls/Setting/MySettingPasswordModify.html",
+      "htmls/Setting/MySettingFeedBack.html"
+    ]
+  },
+  "htmls/Setting/MySettingFeedBack.html": {
+    "resources": [
+      "js/main.js",
+      "images/29.png",
+      "js/jquery-1.7.min.js",
+      "js/mui.min.js",
+      "js/public.js",
+      "css/style.css",
+      "js/pulsClick.js"
+    ],
+    "refer": []
+  },
+  "htmls/MyMessage/MyMessageSysInfo.html": {
+    "resources": [
+      "images/29.png",
+      "js/main.js",
+      "js/jquery-1.7.min.js",
+      "js/mui.min.js",
+      "js/public.js",
+      "css/style.css",
+      "js/pulsClick.js"
+    ],
+    "refer": []
+  },
+  "htmls/Register/PasswordReset.html": {
+    "resources": [
+      "images/15.png",
+      "images/17.png"
+    ],
+    "refer": []
+  },
+  "htmls/Register/RegisterBaseInfo.html": {
+    "resources": [
+      "images/23.png",
+      "images/27.png",
+      "images/25.png",
+      "images/24.png",
+      "images/26.png",
+      "images/28.png",
+      "js/main.js",
+      "images/2.jpg",
+      "js/jquery-1.7.min.js",
+      "js/mui.min.js",
+      "js/public.js",
+      "css/style.css",
+      "js/pulsClick.js",
+      "images/10.png"
+    ],
+    "refer": [
+      "index.html"
+    ]
+  },
+  "htmls/Setting/MySettingPasswordModify.html": {
+    "resources": [
+      "js/main.js",
+      "images/29.png",
+      "js/jquery-1.7.min.js",
+      "js/mui.min.js",
+      "js/public.js",
+      "css/style.css",
+      "js/pulsClick.js"
+    ],
+    "refer": []
+  },
+  "htmls/ActivitySpread/ActivitySelectedMain.html": {
+    "resources": [
+      "images/17.jpg",
+      "images/18.jpg",
+      "images/29.png",
+      "js/mui.min.js",
+      "js/pulsClick.js",
+      "images/16.jpg",
+      "js/main.js",
+      "js/jquery-1.7.min.js",
+      "js/public.js",
+      "css/style.css"
+    ],
+    "refer": [
+      "htmls/ActivitySpread/TMallActivitySelected.html",
+      "htmls/ActivitySpread/MobileActivitySelected.html"
+    ]
+  },
+  "htmls/ActivitySpread/MyActivity.html": {
+    "resources": [
+      "js/main.js",
+      "images/29.png",
+      "js/jquery-1.7.min.js",
+      "js/mui.min.js",
+      "js/public.js",
+      "css/style.css",
+      "images/43.png",
+      "js/pulsClick.js",
+      "images/62.png",
+      "images/3.jpg",
+      "images/44.png"
+    ],
+    "refer": []
+  },
+  "htmls/ActivitySpread/ActivityDetail.html": {
+    "resources": [
+      "images/49.png",
+      "images/42.png",
+      "images/50.png",
+      "images/76.png",
+      "images/53.png",
+      "images/51.png",
+      "images/75.png",
+      "images/77.png",
+      "images/52.png",
+      "images/15.jpg",
+      "images/14.jpg",
+      "js/main.js",
+      "js/jquery-1.7.min.js",
+      "js/public.js",
+      "css/style.css",
+      "images/43.png",
+      "images/44.png",
+      "images/29.png",
+      "js/mui.min.js",
+      "images/79.png",
+      "images/78.png",
+      "js/pulsClick.js"
+    ],
+    "refer": []
+  },
+  "htmls/ActivitySpread/MySpread.html": {
+    "resources": [
+      "js/main.js",
+      "images/29.png",
+      "js/jquery-1.7.min.js",
+      "js/mui.min.js",
+      "js/public.js",
+      "css/style.css",
+      "js/pulsClick.js",
+      "images/3.jpg"
+    ],
+    "refer": [
+      "htmls/ActivitySpread/SpreadDetail.html"
+    ]
+  },
+  "htmls/MyUserInfo/MyManagerApplySucc.html": {
+    "resources": [
+      "js/main.js",
+      "images/29.png",
+      "images/5.jpg",
+      "js/jquery-1.7.min.js",
+      "js/mui.min.js",
+      "js/public.js",
+      "css/style.css",
+      "js/pulsClick.js"
+    ],
+    "refer": [
+      "htmls/ActivitySpread/ActivityDetail.html",
+      "htmls/ActivitySpread/SpreadDetail.html"
+    ]
+  },
+  "htmls/Setting/RealNameAuth.html": {
+    "resources": [
+      "images/60.png",
+      "js/main.js",
+      "images/9.jpg",
+      "images/8.jpg",
+      "images/29.png",
+      "js/jquery-1.7.min.js",
+      "images/42.png",
+      "css/style.css",
+      "js/pulsClick.js"
+    ],
+    "refer": []
+  },
+  "htmls/ActivitySpread/SpreadDetail.html": {
+    "resources": [
+      "js/main.js",
+      "js/jquery-1.7.min.js",
+      "js/public.js",
+      "css/style.css",
+      "js/pulsClick.js",
+      "images/52.png",
+      "images/49.png",
+      "images/29.png",
+      "images/42.png",
+      "js/mui.min.js",
+      "images/50.png",
+      "images/76.png",
+      "images/53.png",
+      "images/51.png",
+      "images/15.jpg",
+      "images/14.jpg"
+    ],
+    "refer": []
+  },
+  "htmls/Managers/ManagerRegister.html": {
+    "resources": [
+      "js/main.js",
+      "images/29.png",
+      "js/jquery-1.7.min.js",
+      "js/mui.min.js",
+      "images/42.png",
+      "js/public.js",
+      "css/style.css",
+      "js/pulsClick.js",
+      "images/22.png"
+    ],
+    "refer": []
+  },
+  "htmls/ActivitySpread/TMallActivitySelected.html": {
+    "resources": [
+      "js/main.js",
+      "js/jquery-1.7.min.js",
+      "js/mui.min.js",
+      "js/public.js",
+      "images/61.png",
+      "js/pulsClick.js",
+      "images/7.jpg",
+      "images/29.png",
+      "css/style.css",
+      "images/43.png",
+      "images/44.png"
+    ]
+  },
+  "htmls/ActivitySpread/SignIn.html": {
+    "resources": [
+      "images/85.png",
+      "images/86.png",
+      "images/84.png",
+      "js/mui.min.js",
+      "js/pulsClick.js",
+      "images/81.png",
+      "js/myDate.js",
+      "js/calendar.js",
+      "images/23.jpg",
+      "js/main.js",
+      "images/2.jpg",
+      "js/jquery-1.7.min.js",
+      "js/public.js",
+      "css/style.css",
+      "images/10.png"
+    ]
+  },
+  "htmls/ActivitySpread/ActivityRanking.html": {
+    "resources": [
+      "js/main.js",
+      "images/2.jpg",
+      "js/jquery-1.7.min.js",
+      "js/mui.min.js",
+      "js/public.js",
+      "images/22.jpg",
+      "css/style.css",
+      "js/pulsClick.js",
+      "images/4.jpg",
+      "images/10.png"
+    ]
+  },
+  "htmls/Setting/PersonalData.html": {
+    "resources": [
+      "images/60.png",
+      "js/main.js",
+      "images/9.jpg",
+      "images/8.jpg",
+      "images/29.png",
+      "images/11.jpg",
+      "images/10.jpg",
+      "js/jquery-1.7.min.js",
+      "js/mui.min.js",
+      "js/public.js",
+      "css/style.css",
+      "js/pulsClick.js"
+    ]
+  },
+  "htmls/ActivitySpread/Serch.html": {
+    "resources": [
+      "js/main.js",
+      "js/jquery-1.7.min.js",
+      "images/42.png",
+      "css/style.css",
+      "js/pulsClick.js",
+      "images/65.png"
+    ]
+  },
+  "htmls/ActivitySpread/SpreadRanking.html": {
+    "resources": [
+      "js/main.js",
+      "images/2.jpg",
+      "js/jquery-1.7.min.js",
+      "js/mui.min.js",
+      "js/public.js",
+      "images/22.jpg",
+      "css/style.css",
+      "js/pulsClick.js",
+      "images/4.jpg",
+      "images/10.png"
+    ]
+  },
+  "Login.html": {
+    "resources": [
+      "js/main.js",
+      "js/jquery-1.7.min.js",
+      "js/public.js",
+      "css/style.css",
+      "images/5.png",
+      "images/2.png",
+      "js/common.js",
+      "images/3.png",
+      "images/1.png",
+      "js/mui.min.js",
+      "images/8.png",
+      "images/4.png",
+      "images/1.jpg",
+      "images/6.png",
+      "images/7.png"
+    ],
+    "refer": [
+      "index.html"
+    ]
+  }
 }

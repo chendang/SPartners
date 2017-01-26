@@ -4,26 +4,31 @@
 <meta charset="utf-8">
 <meta name="keywords" content="" />
 <meta name="description" content="" />
-<meta name="viewport" content="width=750,user-scalable=0" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="format-detection" content="telephone=no" />
 <link type="text/css" href="../../css/style.css" rel="stylesheet" />
 <script type="text/javascript" src="../../js/jquery-1.7.min.js"></script>
 <script type="text/javascript" src="../../js/main.js"></script>
-<title>无标题文档</title>
+<script type="text/javascript" src="../../js/pulsClick.js"></script>
+<script type="text/javascript" src="../../js/public.js"></script>
+<script type="text/javascript" src="../../js/mui.min.js"></script>
+<title>活动拍档详情</title>
 </head>
 
 <body>
 <!--头部start-->
 <div class="header header-bgf">
   <ul>
-    <h1>这是活动名称</h1>
-    <a href="##" title="" class="back"><img src="../../images/29.png" alt="" width="24" height="42" /></a>
+    <h1>活动拍档详情</h1>
+    <a href="javascript:back();" title="" class="back"><img src="../../images/29.png" alt="" /></a>
   </ul>
 </div>
 <!--头部end-->
 
 <!--活动拍档详情start-->
-<div class="details-active mt20">
+<div class="details-active mt10">
   <ul class="title">
     <li>
       <div class="m_cell_hd"><ul></ul></div>
@@ -31,8 +36,8 @@
       <div class="m_cell_ft"><p>工作时长</p></div>
     </li>  
   </ul>
-  <ul class="list">
-    <li>
+  <ul class="list" id="showdetail">
+    <!--<li>
       <div class="m_cell_hd"><ul><img src="../../images/4.jpg" alt=""/></ul></div>
       <div class="m_cell_hd m_cell_primary"><h4>张三</h4></div>
       <div class="m_cell_ft"><p>2天</p></div>
@@ -41,9 +46,64 @@
       <div class="m_cell_hd"><ul><img src="../../images/4.jpg" alt=""/></ul></div>
       <div class="m_cell_hd m_cell_primary"><h4>张三</h4></div>
       <div class="m_cell_ft"><p>2天</p></div>
-    </li>
+    </li>-->
   </ul>
 </div>
 <!--活动拍档详情end-->
 </body>
+	<script>
+		var domainUrl = GetMvcApiDomain();
+		
+		mui.plusReady(function() {
+			
+        //加载活动列表			
+				$.ajax({
+				url: domainUrl + "api/v1/internal/{\"v_manage_activity_detail\":{\"pagination\":{\"page\":\"0\",\"limit\":\"10\"},\"managerId\":\"'"
+				//+ JSON.parse(localStorage.getItem('userinfo')).id 
+				+'132131321'
+				+ "'\",\"columns\":\"activityId,activityName,managerId,userId,userName,workDayNum\"}}",
+				type: 'get',
+				dataType: "json",
+				success: function(data) {
+					var inner = '';
+					if(data.status_code == '000000') {
+
+						if(data.result.data.length == 0) {
+							plus.nativeUI.toast("查询无记录", {
+							duration: "long"
+							});
+						} else {
+							$.each(data.result.data, function(i, j) {
+
+								inner += "<li>";
+								inner += "      <div class=\"m_cell_hd\"><ul><img src=\"../../images/4.jpg\" alt=\"\"/></ul></div>";
+								inner += "      <div class=\"m_cell_hd m_cell_primary\"><h4>"+j.userName+"</h4></div>";
+								inner += "      <div class=\"m_cell_ft\"><p>"+j.workDayNum+"天</p></div>";
+								inner += "    </li>";
+							});
+						}
+
+					} else {
+						plus.nativeUI.toast("查询无记录", {
+						duration: "long"
+						});
+						/*inner += '<div class="my-active-no">';
+						inner += '<ul>';
+						inner += '<li>';
+						inner += '<img src="../../images/62.png" alt="" />';
+						inner += '<p><i>您尚未有进行中的推广</i></p>';
+						inner += '</li>';
+						inner += '</ul>';
+						inner += '</div>';*/
+					}
+					$("#showdetail").html(inner);
+				},
+				error: function(data) {
+					plus.nativeUI.toast("网络错误，请稍后再试", {
+						duration: "long"
+					});
+				}
+			})
+		});
+	</script>
 </html>

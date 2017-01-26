@@ -1,97 +1,370 @@
 <!doctype html>
 <html>
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0" />
-<meta name="format-detection" content="telephone=no" />
-<link type="text/css" href="../../css/style.css" rel="stylesheet" />
-<script type="text/javascript" src="../../js/jquery-1.7.min.js"></script>
-<script type="text/javascript" src="../../js/main.js"></script>
-<script src="../../js/pulsClick.js" type="text/javascript" ></script>
-<title>实名认证</title>
-</head>
 
-<body>
-<!--头部start-->
-<div class="header header-bgf">
-  <ul>
-    <h1>实名认证</h1>
-    <a href="javascript:back();" title="" class="back"><img src="../../images/29.png" alt="" /></a>
-    <a href="javascript:void(0)" class="resigers edit re-cer">重新编辑</a>
-  </ul>
-</div>
-<!--头部end-->
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="format-detection" content="telephone=no" />
+		<link type="text/css" href="../../css/style.css" rel="stylesheet" />
+		<script type="text/javascript" src="../../js/jquery-1.7.min.js"></script>
+		<script type="text/javascript" src="../../js/main.js"></script>
+		<script src="../../js/pulsClick.js" type="text/javascript"></script>
+		<script src="../../js/exif.js" type="text/javascript"></script>
+		<title>实名认证</title>
+	</head>
 
-<!--实名认证start-->
-<div class="name-certification mt10">
-  <ul class="form">
-    <li>
-      <div class="m_cell_hd"><label>真实姓名：</label></div>
-      <div class="m_cell_ft m_cell_primary"><input type="text" value="" placeholder="请如实填写" class="text" /></div>
-    </li>
-    <li>
-      <div class="m_cell_hd"><label>所在院校：</label></div>
-      <div class="m_cell_ft m_cell_primary"><input type="text" value="" placeholder="请填写院校名称" class="text" /></div>
-    </li>
-    <li>
-      <div class="m_cell_hd"><label>证件号码：</label></div>
-      <div class="m_cell_ft m_cell_primary"><input type="text" value="" placeholder="1105****************" class="text" /></div>
-    </li>
-    <li class="clearfix certification-info">
-      <div class="m_cell_hd"><label><span class="pb155"><i></i>身份证：<em>*必上传</em></span></label></div>
-      <div class="m_cell_ft m_cell_primary">
-        <ul>
-          <a href="javascript:void(0)" class="upudate-img"><img src="../../images/8.jpg" alt="" /></a>
-        </ul>
-        <ul>
-          <a href="javascript:void(0)" class="upudate-img"><img src="../../images/9.jpg" alt="" /></a>
-        </ul>
-      </div>
-    </li>
-    <li class="clearfix certification-info">
-      <div class="down">
-        <ul class="m_cell_hd m_cell_primary"><label><span><i></i>学生证：<em>*可不上传</em></span></label></ul>
-        <ul class="m_cell_ft"><img src="../../images/60.png" alt="" /></ul>
-      </div>
-      <div class="down-info disable">
-        <ul class="m_cell_hd"><label style="color:#fff;"><span><i></i>学生证：</span></label></ul>
-        <ul class="m_cell_ft m_cell_primary">
-          <div><a href="javascript:void(0)" class="upudate-img"><img src="../../images/8.jpg" alt="" /></a></div>
-          <div><a href="javascript:void(0)" class="upudate-img"><img src="../../images/9.jpg" alt="" /></a></div>
-        </ul>
-      </div> 
-    </li>
-  </ul>
-  <ul class="form04"><p>注：你的个人资料受隐私保护，不会对外公开</p></ul>
-  
-  <ul class="form01">
-    <input type="button" value="提交审核" class="button submit" />
-  </ul>
-</div>
-<!--实名认证end-->
-<!--上传证件start-->
-<div class="hover disable"></div>
-<div class="upload-img disable">
-  <ul>
-    <li><a href="javascript:void(0)">拍照</a></li>
-    <li><a href="javascript:void(0)">从相册中选取</a></li>
-  </ul>
-  <ul>
-    <li><a href="javascript:void(0)" class="esc">取消</a></li>
-  </ul>
-</div>
-<!--上传证件end-->
-<!--提交成功start-->
-<div class="hover01 disable"></div>
-<div class="box01 disable">
-  <ul>
-    <img src="../../images/42.png" alt="" class="close01" />
-    <div class="submit-success">
-      <h2>提交成功</h2>
-      <p>审核周期2-3个工作日</p> 
-    </div>
-  </ul>
-</div>
-<!--提交成功end-->
-</body>
+	<body>
+		<!--头部start-->
+		<div class="header header-bgf">
+			<ul>
+				<h1>实名认证</h1>
+				<a href="javascript:back();" title="" class="back"><img src="../../images/29.png" alt="" /></a>
+				<a href="javascript:void(0)" class="resigers edit re-cer">重新编辑</a>
+			</ul>
+		</div>
+		<!--头部end-->
+
+		<!--实名认证start-->
+		<div class="name-certification mt10">
+			<ul class="form">
+				<li>
+					<div class="m_cell_hd"><label>真实姓名：</label></div>
+					<div class="m_cell_ft m_cell_primary"><input type="text" id="realname" value="" placeholder="请如实填写" class="text" /></div>
+				</li>
+				<li>
+					<div class="m_cell_hd"><label>所在院校：</label></div>
+					<div class="m_cell_ft m_cell_primary"><input type="text" id="collage" value="" placeholder="请填写院校名称" class="text" /></div>
+				</li>
+				<li>
+					<div class="m_cell_hd"><label>证件号码：</label></div>
+					<div class="m_cell_ft m_cell_primary"><input type="text" id="idno" value="" placeholder="1105**********8888" class="text" /></div>
+				</li>
+				<li class="clearfix certification-info">
+					<div class="m_cell_hd"><label><span class="pb155"><i></i>身份证：<em>*必上传</em></span></label></div>
+					<div class="m_cell_ft m_cell_primary">
+						<ul>
+							<a href="javascript:takePhoto('1')" class="upudate-img" id="filePicker1"><img src="../../images/8.jpg" alt="" id="frontIdPic" /></a>
+						</ul>
+						<ul>
+							<a href="javascript:takePhoto('2')" class="upudate-img" id="filePicker2"><img src="../../images/9.jpg" alt="" id="backIdPic" //></a>
+						</ul>
+					</div>
+				</li>
+				<li class="clearfix certification-info">
+					<div class="down">
+						<ul class="m_cell_hd m_cell_primary"><label><span><i></i>学生证：<em>*可不上传</em></span></label></ul>
+						<ul class="m_cell_ft"><img src="../../images/60.png" alt="" /></ul>
+					</div>
+					<div class="down-info disable">
+						<ul class="m_cell_hd"><label style="color:#fff;"><span><i></i>学生证：</span></label></ul>
+						<ul class="m_cell_ft m_cell_primary">
+							<div>
+								<a href="javascript:takePhoto('3')" class="upudate-img" id="filePicker3"><img src="../../images/8.jpg" alt="" id="frontXszPic" /></a>
+							</div>
+							<div>
+								<a href="javascript:takePhoto('4')" class="upudate-img" id="filePicker4"><img src="../../images/9.jpg" alt="" id="backXszPic" /></a>
+							</div>
+						</ul>
+					</div>
+				</li>
+			</ul>
+			<ul class="form04">
+				<p>注：你的个人资料受隐私保护，不会对外公开</p>
+			</ul>
+
+			<ul class="form01">
+				<input type="button" value="提交审核" class="button submit" id="uploadSubmit" />
+			</ul>
+		</div>
+		<!--实名认证end-->
+		<!--上传证件end-->
+		<!--提交成功start-->
+		<div class="hover01 disable"></div>
+		<div class="box01 disable">
+			<ul>
+				<img src="../../images/42.png" alt="" class="close01" />
+				<div class="submit-success">
+					<h2>提交成功</h2>
+					<p>审核周期2-3个工作日</p>
+				</div>
+			</ul>
+		</div>
+		<!--提交成功end-->
+	</body>
+
+	<script src="../../js/mui.min.js"></script>
+	<script src="../../js/public.js" type="text/javascript"></script>
+
+	<script>
+		var domainUrl = GetMvcApiDomain();
+		var frontIdPicBase64 = null;
+		var backIdPicBase64 = null;
+		var frontXszPicBase64 = null;
+		var backXszPicBase64 = null;
+		var realname;
+		var collage;
+		var idno;
+		mui.init();
+
+		function takePhoto(pictype) {
+			if(mui.os.plus) {
+				var a = [{
+					title: "拍照"
+				}, {
+					title: "从手机相册选择"
+				}];
+				plus.nativeUI.actionSheet({
+					title: "请选择",
+					cancel: "取消",
+					buttons: a
+				}, function(b) { /*actionSheet 按钮点击事件*/
+					switch(b.index) {
+						case 0:
+							break;
+						case 1:
+							getImage(pictype); /*拍照*/
+							break;
+						case 2:
+							galleryImg(pictype); /*打开相册*/
+							break;
+						default:
+							break;
+					}
+				})
+			}
+		}
+		document.getElementById('uploadSubmit').addEventListener('tap', function() {
+			upload();
+		}, false);
+
+		function getImage(pictype) {
+			var cmr = plus.camera.getCamera();
+			cmr.captureImage(function(p) {
+					plus.io.resolveLocalFileSystemURL(p, function(entry) {
+							var path = entry.toLocalURL();
+
+							//picIndex += 1;  
+							appendFile(path, pictype); //处理图片的地方  
+							//setTimeout("upload(1)", 1000);  
+						},
+						function(e) {
+							alert("读取拍照文件错误：" + e.message);
+						});
+				},
+				function(e) {
+					//                  alert("失败：" + e.message);  
+				}, {
+					filename: "_doc/camera/",
+					index: 1
+				});
+		}
+
+		function galleryImg(pictype) {
+			plus.gallery.pick(function(path) {
+
+				//picIndex += 1;  
+				appendFile(path, pictype); //处理图片的地方  
+				//setTimeout("upload(2)", 1000);  
+			}, function(e) {
+				console.log("取消选择图片");
+			}, {
+				filter: "none",
+				system: false
+			});
+		}
+
+		function appendFile(path, pictype) {
+			plus.nativeUI.showWaiting("加载中......");
+			var img = new Image();
+			// 						var img = $('#frontPic');  
+			img.src = path; // 传过来的图片路径在这里用。  
+			img.onload = function() {
+				var that = this;
+				//生成比例   
+				var w = that.width,
+					h = that.height,
+					scale = w / h;
+				w = 480 || w; //480  你想压缩到多大，改这里  
+				h = w / scale;
+				//生成canvas  
+				var canvas = document.createElement('canvas');
+				var ctx = canvas.getContext('2d');
+				$(canvas).attr({
+					width: w,
+					height: h
+				});
+
+				//获取照片方向角属性，用户旋转控制 ,判断当前图片是否需要做旋转操作。
+				EXIF.getData(img, function() {
+					EXIF.getAllTags(this);
+					/**
+					 * 图片的旋转方向信息
+					 * 1、图片没有发生旋转
+					 * 6、顺时针90°
+					 * 8、逆时针90°
+					 * 3、180° 旋转
+					 */
+					Orientation = EXIF.getTag(this, 'Orientation');
+					//						    if(Orientation != "" && Orientation != null) {
+					//						    	// 方向信息，canvas 显示形式，canvas 对象，that,宽度，高度
+					//						    	rotateImg(Orientation,ctx,canvas,that,w,h);
+					//						    }else {
+					//						    	rotateImg(Orientation,ctx,canvas,that,w,h);
+					//						    }
+					if(Orientation == "6") {
+						$(canvas).attr({
+							width: w / 2,
+							height: h
+						});
+						ctx.translate(270, 0);
+						var angle = 90;
+						//清空画布指定像素
+						ctx.clearRect(-w, -h, w, h);
+						// 画布旋转 90度
+						ctx.rotate(angle * Math.PI / 180);
+						ctx.fillRect(w, h, w, h);
+					}
+					ctx.drawImage(that, 0, 0, w, h);
+					var base64 = canvas.toDataURL('image/jpeg', 1 || 0.8); //1最清晰，越低越模糊。
+					if(pictype === '1') {
+						frontIdPicBase64 = base64;
+						document.getElementById('frontIdPic').src = path;
+					}
+					if(pictype === '2') {
+						backIdPicBase64 = base64;
+						document.getElementById('backIdPic').src = path;
+					}
+					if(pictype === '3') {
+						frontXszPicBase64 = base64;
+						document.getElementById('frontXszpic').src = path;
+					}
+					if(pictype === '4') {
+						backXszPicBase64 = base64;
+						document.getElementById('backXszPic').src = path;
+					}
+					plus.nativeUI.closeWaiting();
+				});
+
+			}
+		}
+
+		function upload(index) {
+
+			realname = $("#realname").val();
+			collage = $("#collage").val();
+			idno = $("#idno").val();
+			if(validateNull(realname)) {
+				$("#realname").val("");
+				$("#realname").focus();
+				plus.nativeUI.toast("请正确输入真实姓名！", {
+					duration: "long"
+				});
+				return false;
+			}
+			if(validateNull(collage)) {
+				$("#collage").val("");
+				$("#collage").focus();
+				plus.nativeUI.toast("请正确输入学校名称！", {
+					duration: "long"
+				});
+				return false;
+			}
+			if(validateNull(idno)) {
+				$("#idno").val("");
+				$("#idno").focus();
+				plus.nativeUI.toast("请正确输入身份证！", {
+					duration: "long"
+				});
+				return false;
+			}
+			if(validateNull(frontIdPicBase64)) {
+				plus.nativeUI.toast("请上传身份证正面！", {
+					duration: "long"
+				});
+				return false;
+			}
+			if(validateNull(backIdPicBase64)) {
+				plus.nativeUI.toast("请上传身份证反面！", {
+					duration: "long"
+				});
+				return false;
+			}
+			var wt = plus.nativeUI.showWaiting();
+			//发送数据    
+			var jsonData = {
+				"partner_realname_info": {
+					"id": "'" + Date.parse(new Date()) + "'",
+					"userID": "'" + JSON.parse(localStorage.getItem('userinfo')).id + "'",
+					"realName": "'" + realname + "'",
+					"college": "'" + collage + "'",
+					"credentialsType": "'0'",
+					"credentialsCode": "'" + idno + "'",
+					"frontPagePath": "'" + frontIdPicBase64 + "'",
+					"backPagePath": "'" + backIdPicBase64 + "'",
+					"status": "'2'",
+					"studentsCardType": "'0'",
+					"SCFrontPagePath": "'" + frontXszPicBase64 + "'",
+					"SCBackPagePath": "'" + backXszPicBase64 + "'",
+					"studentsCardNub": "''"
+				}
+			}
+			$.ajax({
+					url: domainUrl + "api/v1/internal/",
+					type: "POST",
+					dataType: "json",
+					contentType: "application/json; charset=utf-8",
+					data: JSON.stringify(jsonData),
+					success: function(data) {
+						if(data.status_code == '000000') {
+							mui.alert('审核周期2-3个工作日', '提交成功', function() {
+									mui.openWindow({
+											url: "RealNameAuthRes.html",
+											id: 'RealNameAuthRes',
+											extras: {
+												"frontIdPicBase64": frontIdPicBase64,
+												"backIdPicBase64": backIdPicBase64,
+												"frontXszPicBase64": frontXszPicBase64,
+												"backXszPicBase64": backXszPicBase64,
+												"realname": realname,
+												"collage": collage,
+												"idno": idno,
+												"type": '0'
+											},
+											show: {
+												autoShow: true, //页面loaded事件发生后自动显示，默认为true  
+												aniShow: 'slide-in-right', //页面显示动画，默认为”slide-in-right“；  
+												duration: 300 //页面动画持续时间，Android平台默认100毫秒，iOS平台默认200毫秒；  
+											},
+											waiting: {
+												autoShow: true, //自动显示等待框，默认为true
+												title: '正在加载...', //等待对话框上显示的提示内容
+												options: {
+													width: "100%", //等待框背景区域宽度，默认根据内容自动计算合适宽度
+													height: "100%", //等待框背景区域高度，默认根据内容自动计算合适高度
+												}
+											}});
+
+									});
+						} else {
+
+							 plus.nativeUI.toast("返回错误,错误码：" + data.status_code + "错误信息：" + data.result, {
+									duration: "long"
+								});
+
+							}
+							plus.nativeUI.closeWaiting();
+						},
+						error: function(data) {
+							plus.nativeUI.closeWaiting();
+							plus.nativeUI.toast("网络错误，请稍后再试", {
+								duration: "long"
+							});
+						}
+					});
+
+			}
+	</script>
+
 </html>

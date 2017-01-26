@@ -2,7 +2,9 @@
 <html>
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="format-detection" content="telephone=no" />
 <link type="text/css" href="../../css/style.css" rel="stylesheet" />
 <script type="text/javascript" src="../../js/jquery-1.7.min.js"></script>
@@ -65,7 +67,7 @@
 <div class="line50"></div>
 <div class="save-add">
   <ul class="clearfix">
-    <a href="javascript:activityConnect(this)" id="activityConnect" class="fl save">收藏</a>
+    <a href="javascript:void()" id="activityConnect" class="fl save">收藏</a>
     <!--<button onclick="activitySignUp(this)" id="SignUpBtn" class="fr add-active add-active01">报名参加</button>-->
     <a href="javascript:void()" id="SignUpBtn" class="fr add-active add-active01"></a>
   </ul>
@@ -168,7 +170,7 @@ mui.plusReady(function() {
 //				}
 			} else {
 				$("#SignUpBtn").text("报名参加");
-				plus.nativeUI.toast(data.result, {
+				plus.nativeUI.toast("返回错误,错误码："+data.status_code+"错误信息："+data.result, {
 					duration: "long"
 				});
 			}
@@ -188,6 +190,41 @@ mui.plusReady(function() {
 			activitySignUp();
 		}
 	});
+
+	//判断活动是否收藏
+	$.ajax({
+		url: domainUrl + "api/v1/internal/{\"partner_user_collection\":{\"userid\":\"'"+localStorage.getItem('userid')+"'\",\"promotionId\":\"'"+
+		actId+"'\",\"columns\":\"collectTime\"}}",
+		type: 'get',
+		dataType: "json",
+		success: function(data) {
+			if(data.status_code == '000000') {
+				//已收藏
+				if(data.result.status==='unaudit'){
+						$("#activityConnect").addClass("on");
+						$("#activityConnect").DISABLED = true;
+						return;
+				}
+			} else {
+				//$("#activityConnect").text("报名参加");
+			}
+
+		},
+		error: function() {
+			plus.nativeUI.toast("网络错误，请稍后再试", {
+				duration: "long"
+			});
+		}
+	})
+
+	$("#activityConnect").click(function() {
+		if($("#activityConnect").hasClass("on")) {
+			return;
+		} else {
+			activityConnect();
+		}
+	});
+
 
 });
 
@@ -215,7 +252,7 @@ function getActiveDetail(id) {
 				document.getElementById('lxdh').innerHTML = data.result.linkmanPhone;
 				document.getElementById('managerPhone').innerHTML = data.result.linkmanPhone;
 			} else {
-				plus.nativeUI.toast(data.result, {
+				plus.nativeUI.toast("返回错误,错误码："+data.status_code+"错误信息："+data.result, {
 					duration: "long"
 				});
 			}
@@ -255,7 +292,7 @@ function infoRegSave(telno, msgcode, loginpass, reginvitecode) {
 				var user = data.result;
 
 			} else {
-				plus.nativeUI.toast(data.result, {
+				plus.nativeUI.toast("返回错误,错误码："+data.status_code+"错误信息："+data.result, {
 					duration: "long"
 				});
 				return false;
@@ -274,10 +311,10 @@ function infoRegSave(telno, msgcode, loginpass, reginvitecode) {
 function activityConnect() {
 	var jsonData = {
 		"partner_user_collection": {
-			"id": "'" + Date.parse(new Date()) + "'",
-			"userID": "'" + JSON.parse(localStorage.getItem('userinfo')).id + "'",
+			"id": "\"'" + Date.parse(new Date()) + "'\"",
+			"userID": "\"'" + JSON.parse(localStorage.getItem('userinfo')).id + "'\"",
 			"type": "'1'",
-			"promotionID": "\'" + actId + "\'"
+			"promotionID": "\"'" + actId + "'\""
 		}
 	}
 	console.log("send:" + JSON.stringify(jsonData));
@@ -308,7 +345,7 @@ function activityConnect() {
 				//								  });
 			} else {
 				console.log("error res:" + data);
-				plus.nativeUI.toast(data.result, {
+				plus.nativeUI.toast("返回错误,错误码："+data.status_code+"错误信息："+data.result, {
 					duration: "long"
 				});
 			}
@@ -365,7 +402,7 @@ function activitySignUp() {
 				//									  });
 			} else {
 				alert("error res:" + data.status_code);
-				plus.nativeUI.toast(data.result, {
+				plus.nativeUI.toast("返回错误,错误码："+data.status_code+"错误信息："+data.result, {
 					duration: "long"
 				});
 			}

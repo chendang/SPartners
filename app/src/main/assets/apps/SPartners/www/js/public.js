@@ -83,7 +83,8 @@ function GetApiDomain() {
 
 function GetMvcApiDomain() {
     //var data = "http://localhost:30373/";
-    var data = "http://www.soongrande.com:8080/mobile/";
+    //var data = "http://www.soongrande.com:8080/mobile/";
+    var data = "http://114.115.210.112:8080/mobile/";
     return data;
 }
 
@@ -121,9 +122,15 @@ function validatePass(obj){
       return false;
     return  true;
    
-  };
+  }
 
-
+function validateNull(obj){
+	if(obj==null || obj.length==0){   
+	     return true;
+	}  
+    return  false;
+   
+  }
 
 
 

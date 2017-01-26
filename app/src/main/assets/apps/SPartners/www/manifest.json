@@ -10,7 +10,7 @@
     "icons": {
         "72": "icon.png"
     },
-    "launch_path": "Login.html",/*应用的入口页面，默认为根目录下的index.html；支持网络地址，必须以http://或https://开头*/
+    "launch_path": "preload.html",/*应用的入口页面，默认为根目录下的index.html；支持网络地址，必须以http://或https://开头*/
     "developer": {
         "name": "",/*开发者名称*/
         "email": "",/*开发者邮箱地址*/
@@ -284,7 +284,29 @@
 					"images/1.png",
 					"images/33.png",
 					"js/loadding.js",
-					"css/loadding.css"
+					"css/loadding.css",
+					"css/libs/CSSRESET.css",
+					"images/img_index/icon_hot.png",
+					"images/img_index/icon_home_at.png",
+					"css/index.css",
+					"css/common.css",
+					"images/img_index/icon_mine.png",
+					"images/img_index/icon_calinda.png",
+					"images/img_index/icon_search.png",
+					"images/img_index/tg_pic_1.png",
+					"images/img_index/active_pic_3.png",
+					"images/img_index/active_pic_1.png",
+					"images/img_index/icon_msg.png",
+					"images/img_index/tg_pic_2.png",
+					"css/libs/swiper.min.css",
+					"images/img_index/active_pic_2.png",
+					"images/img_index/index_banner_pic_1.jpg",
+					"images/img_index/icon_time_y.png",
+					"images/img_index/icon_location_y.png",
+					"images/img_index/index_hot_pic_1.png",
+					"js/libs/swiper.jquery.min.js",
+					"images/img_index/tg_pic_3.png",
+					"images/img_index/icon_location.png"
 				],
 				"refer": [
 					"htmls/ActivitySpread/MobileActivitySelected.html",
@@ -377,7 +399,9 @@
 					"images/44.png",
 					"js/mui.min.js",
 					"js/public.js",
-					"images/61.png"
+					"images/61.png",
+					"css/mui.min.css",
+					"js/mui.js"
 				],
 				"refer": [
 					"htmls/ActivitySpread/ActivityDetail.html"
@@ -708,7 +732,8 @@
 					"images/29.png",
 					"js/mui.min.js",
 					"images/79.png",
-					"images/78.png"
+					"images/78.png",
+					"js/pulsClick.js"
 				],
 				"refer": [],
 				"priority": 0

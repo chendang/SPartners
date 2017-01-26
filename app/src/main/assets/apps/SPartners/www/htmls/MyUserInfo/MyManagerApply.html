@@ -1,57 +1,117 @@
 <!doctype html>
 <html>
-<head>
-<meta charset="utf-8">
-<meta name="keywords" content="" />
-<meta name="description" content="" />
-<meta name="viewport" content="width=750,user-scalable=0" />
-<meta name="format-detection" content="telephone=no" />
-<link type="text/css" href="../../css/style.css" rel="stylesheet" />
-<script type="text/javascript" src="../../js/jquery-1.7.min.js"></script>
-<script type="text/javascript" src="../../js/main.js"></script>
-<title>无标题文档</title>
-</head>
 
-<body>
-<!--头部start-->
-<div class="header header-bgf">
-  <ul>
-    <h1>申请调查</h1>
-    <a href="##" title="" class="back"><img src="../../images/29.png" alt="" width="24" height="42" /></a>
-  </ul>
-</div>
-<!--头部end-->
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="format-detection" content="telephone=no" />
+		<link type="text/css" href="../../css/style.css" rel="stylesheet" />
+		<script type="text/javascript" src="../../js/jquery-1.7.min.js"></script>
+		<script type="text/javascript" src="../../js/main.js"></script>
+		<script src="../../js/pulsClick.js" type="text/javascript"></script>
+		<title>申请调查</title>
+	</head>
 
-<!--申请调查start-->
-<div class="application-investigation mt20">
-  <ul class="form">
-    <li>
-      <h4>你在哪所高校？</h4>
-      <input type="text" value="" placeholder="例如：北京化工大学" class="text" />
-    </li>
-    <li>
-      <h4>你能够招募多少人？</h4>
-      <input type="text" value=""  class="text"/>
-    </li>
-  </ul>
-  <ul class="form01">
-    <input type="button" value="提交审核" class="button" />
-  </ul>
-</div>
-<!--申请调查end-->
-<!--提交成功start-->
-<div class="hover disable"></div>
-<div class="box disable">
-  <ul>
-    <img src="../../images/42.png" alt="" class="close" />
-    <div class="bound-alipay-success application-box">
-      <ul>
-        <img src="../../images/22.png" />
-        <h4>提交成功</h4>
-      </ul>
-    </div>
-  </ul>
-</div>
-<!--提交成功end-->
-</body>
+	<body>
+		<!--头部start-->
+		<div class="header header-bgf">
+			<ul>
+				<h1>申请调查</h1>
+				<a href="javascript:back();" title="" class="back"><img src="../../images/29.png" alt="" /></a>
+			</ul>
+		</div>
+		<!--头部end-->
+
+		<!--申请调查start-->
+		<div class="application-investigation mt10">
+			<ul class="form">
+				<li>
+					<h4>你在哪所高校？</h4>
+					<input type="text" value="" placeholder="例如：北京化工大学" class="text" id="collage" />
+				</li>
+				<li>
+					<h4>你能够招募多少人？</h4>
+					<input type="text" value="" class="text" id="memberCount" />
+				</li>
+			</ul>
+			<ul class="form01">
+				<input type="button" value="提交审核" class="button" id="btnsave" />
+			</ul>
+		</div>
+		<!--申请调查end-->
+		<!--提交成功start-->
+		<div class="hover disable"></div>
+		<div class="box disable">
+			<ul>
+				<img src="../../images/42.png" alt="" class="close" />
+				<div class="bound-alipay-success application-box">
+					<ul>
+						<img src="../../images/22.png" />
+						<h4>提交成功</h4>
+					</ul>
+				</div>
+			</ul>
+		</div>
+		<!--提交成功end-->
+	</body>
+
+	<script src="../../js/mui.min.js"></script>
+	<script src="../../js/public.js" type="text/javascript"></script>
+
+	<script>
+		var domainUrl = GetMvcApiDomain();
+
+		mui.init();
+
+		function managerApply() {
+
+			var question1 = document.getElementById('collage').value;;
+			var question2 = document.getElementById('memberCount').value;
+			var jsonData = {"partner_manager_info ":{
+				"id": "'" + Date.parse(new Date()) + "'",
+				"userID": "'" + JSON.parse(localStorage.getItem('userinfo')).id + "'",
+				"question1": "'" +question1+ "'",
+				"question2": "'" +question2+ "'",
+				"username": "'12'"
+			}
+			}
+			$.ajax({
+				url: domainUrl + "api/v1/internal/",
+				type: 'POST',
+				dataType: "json",
+				contentType: "application/json; charset=utf-8",
+				data: JSON.stringify(jsonData),
+				success: function(data) {
+					
+					if(data.status_code == "000000") {
+						//跳转审核中中页面
+						var res = data.result;
+						clicked('MyManagerApplyRes.html',true);
+
+					} else{
+						//clicked('MyManagerApplyRes.html',true);
+						plus.nativeUI.toast("返回错误,错误码："+data.status_code+"错误信息："+data.result, {
+							duration: "long"
+						});
+						return false;
+					}
+
+				},
+				error: function() {
+					plus.nativeUI.toast("网络错误，请稍后再试", {
+						duration: "long"
+					});
+				}
+			});
+
+		}
+
+		document.getElementById("btnsave").addEventListener('tap', function() {
+			managerApply();
+
+		});
+	</script>
+
 </html>
